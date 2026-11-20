@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#123d35">
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<title>نسخه طبیب | درمان جان با کلام امیرالمؤمنین (ع)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap');
+:root{
+  --green:#123d35;--green2:#1c594c;--gold:#c5a45b;
+  --cream:#f7f4eb;--paper:#fffdf8;--ink:#23342f;
+  --muted:#6c7973;--line:#e7e2d5;--soft:#edf3ef;
+  --shadow:0 18px 50px rgba(20,52,43,.09)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:"Vazirmatn",Tahoma,sans-serif;line-height:1.9}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.wrap{width:min(1120px,92%);margin:auto}
+
+.topbar{background:var(--green);color:#f7f4eb;font-size:.86rem;padding:8px 0}
+.topbar .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+.nav{position:sticky;top:0;z-index:20;background:rgba(255,253,248,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.navin{display:flex;align-items:center;justify-content:space-between;min-height:76px;gap:18px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--green)}
+.brandmark{width:44px;height:44px;border:1px solid var(--gold);border-radius:14px;display:grid;place-items:center;color:var(--gold);font-size:24px}
+.brand strong{display:block;font-size:1.22rem;line-height:1.3}
+.brand small{display:block;color:var(--muted);font-size:.7rem}
+.links{display:flex;gap:18px;align-items:center}
+.links a{color:var(--ink);text-decoration:none;font-size:.88rem;transition:.2s}
+.links a:hover{color:var(--gold)}
+
+.btn{border:0;border-radius:13px;padding:11px 19px;background:var(--green);color:white;font-weight:600;transition:.2s;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
+.btn:hover{background:var(--green2);transform:translateY(-1px)}
+.btn.gold{background:var(--gold);color:#1e302a}
+.btn.outline{background:transparent;border:1px solid var(--green);color:var(--green)}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+
+.hero{padding:76px 0 60px;background:radial-gradient(circle at 10% 15%,rgba(197,164,91,.17),transparent 28%),linear-gradient(135deg,#f7f4eb,#eef3ed)}
+.heroGrid{display:grid;grid-template-columns:1.2fr .8fr;gap:42px;align-items:center}
+.eyebrow{color:var(--green2);font-weight:700;font-size:.85rem;letter-spacing:.02em}
+.hero h1{font-size:clamp(2.2rem,5vw,4.2rem);line-height:1.35;margin:12px 0;color:var(--green)}
+.hero h1 span{color:var(--gold)}
+.lead{font-size:1.12rem;color:#596760;max-width:650px}
+.heroActions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+.heroArt{min-height:310px;border-radius:30px;background:linear-gradient(145deg,#17483e,#0d302a);position:relative;overflow:hidden;display:grid;place-items:center;box-shadow:var(--shadow)}
+.heroArt:before,.heroArt:after{content:"";position:absolute;border:1px solid rgba(197,164,91,.35);border-radius:50%;width:270px;height:270px}
+.heroArt:after{width:210px;height:210px}
+.mirror{width:150px;height:190px;border:3px solid var(--gold);border-radius:50% 50% 44% 44%;display:grid;place-items:center;color:#e8d7a9;font-size:4.5rem;z-index:1;box-shadow:0 0 0 12px rgba(197,164,91,.08),0 0 45px rgba(197,164,91,.16)}
+.heroArt p{position:absolute;bottom:16px;color:#e6dfc9;font-size:.8rem;z-index:2;padding:0 16px;text-align:center}
+
+.section{padding:66px 0}
+.sectionHead{text-align:center;max-width:720px;margin:0 auto 34px}
+.sectionHead h2{font-size:2rem;color:var(--green);margin:0 0 8px}
+.sectionHead p{color:var(--muted);margin:0}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 8px 25px rgba(20,52,43,.035);transition:.2s}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.card .ico{width:48px;height:48px;border-radius:15px;background:var(--soft);display:grid;place-items:center;font-size:1.5rem;margin-bottom:14px}
+.card h3{color:var(--green);margin:0 0 7px;font-size:1.15rem}
+.card p{color:var(--muted);font-size:.92rem;margin:0}
+
+.testBand{background:var(--green);color:#f7f4eb;padding:55px 0}
+.testBand .inner{display:flex;align-items:center;justify-content:space-between;gap:25px}
+.testBand h2{font-size:1.8rem;margin:0 0 8px}
+.testBand p{color:#d7e2dc;margin:0}
+.testBand .btn{background:var(--gold);color:#20332c;white-space:nowrap}
+
+.quote{background:#efe8d7;border-right:4px solid var(--gold);padding:22px 25px;border-radius:14px;color:#4c554c}
+.quote strong{color:var(--green)}
+
+.footer{background:#0e302a;color:#dbe5df;padding:38px 0 22px}
+.footerGrid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:25px}
+.footer h3{color:#e8d6a5;margin-top:0}
+.footer p,.footer a{font-size:.88rem;color:#c3d1ca}
+.footer a{display:block;text-decoration:none;margin:5px 0;transition:.2s}
+.footer a:hover{color:var(--gold)}
+.copy{border-top:1px solid rgba(255,255,255,.13);margin-top:25px;padding-top:15px;color:#9fb2a8;font-size:.78rem}
+
+.page{display:none;padding:42px 0 70px;min-height:65vh}
+.page.active{display:block}
+.pageTitle{margin-bottom:26px}
+.pageTitle h1{color:var(--green);font-size:2.1rem;margin:0}
+.pageTitle p{color:var(--muted);margin:5px 0}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:var(--shadow)}
+.notice{background:#fff7e4;border:1px solid #ead9aa;border-radius:14px;padding:15px 17px;color:#64532d;font-size:.9rem}
+.small{font-size:.82rem;color:var(--muted)}
+.hidden{display:none!important}
+
+.progressWrap{height:8px;background:#e8e7df;border-radius:99px;overflow:hidden;margin:18px 0 8px}
+.progress{height:100%;background:var(--gold);width:0;transition:.25s}
+.qtop{display:flex;justify-content:space-between;color:var(--muted);font-size:.85rem;gap:10px}
+.question{font-size:1.25rem;font-weight:650;color:var(--green);margin:24px 0}
+.answers{display:grid;gap:10px}
+.answer{display:flex;align-items:center;gap:12px;padding:13px 15px;border:1px solid var(--line);border-radius:13px;background:white;cursor:pointer;transition:.15s}
+.answer:hover{border-color:var(--gold)}
+.answer.selected{border-color:var(--green);background:var(--soft)}
+.answer input{accent-color:var(--green);width:18px;height:18px}
+.qactions{display:flex;justify-content:space-between;gap:12px;margin-top:25px}
+
+.resultGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin:22px 0}
+.scoreCard{border:1px solid var(--line);border-radius:15px;padding:17px;background:#fff}
+.scoreHead{display:flex;justify-content:space-between;gap:10px;font-weight:650;color:var(--green)}
+.bar{height:9px;background:#eeeae0;border-radius:20px;margin-top:12px;overflow:hidden}
+.bar span{display:block;height:100%;background:var(--gold);border-radius:20px;transition:.4s}
+.level{font-size:.8rem;color:var(--muted);margin-top:6px}
+.resultActions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.reportIntro{padding:22px;border-radius:16px;background:var(--soft);margin-bottom:20px}
+.reportIntro h2{color:var(--green);margin:0 0 8px}
+.domainReport{padding:18px 0;border-bottom:1px solid var(--line)}
+.domainReport:last-child{border:0}
+.domainReport h3{margin:0;color:var(--green)}
+.domainReport p{margin:5px 0;color:var(--muted);font-size:.92rem}
+.consent{display:flex;align-items:flex-start;gap:10px;margin:16px 0;color:var(--muted);font-size:.9rem}
+.consent input{margin-top:8px;accent-color:var(--green)}
+.field{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;background:white}
+.pill{display:inline-block;border-radius:99px;background:var(--soft);color:var(--green);padding:4px 12px;font-size:.8rem;margin:3px}
+
+.hekmatCard{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:26px;margin-bottom:22px;box-shadow:0 8px 25px rgba(20,52,43,.04)}
+.hekmatCard .num{display:inline-block;background:var(--green);color:var(--gold);padding:4px 14px;border-radius:99px;font-size:.8rem;font-weight:700;margin-bottom:12px}
+.hekmatCard .arabic{font-size:1.3rem;line-height:2.2;color:var(--green);text-align:center;padding:20px;background:var(--soft);border-radius:14px;margin:15px 0;font-weight:600;direction:rtl}
+.hekmatCard .trans{color:#4c554c;font-size:1rem;padding:12px 0;border-right:3px solid var(--gold);padding-right:16px;margin:12px 0}
+.hekmatCard .words{margin:15px 0;padding:14px;background:#fdf9ef;border-radius:12px}
+.hekmatCard .words h4{margin:0 0 8px;color:var(--green);font-size:.95rem}
+.hekmatCard .words p{margin:4px 0;font-size:.9rem;color:var(--muted)}
+.hekmatCard .reflect{margin:15px 0;padding:15px;background:#f0f6f2;border-radius:12px;border-right:3px solid var(--green)}
+.hekmatCard .reflect h4{margin:0 0 8px;color:var(--green);font-size:.95rem}
+.hekmatCard .reflect ol{margin:0;padding-right:20px;color:#4c554c;font-size:.92rem}
+.hekmatCard .reflect li{margin:8px 0}
+.hekmatCard .ask{margin:15px 0;padding:15px;background:#fff7e4;border-radius:12px;border-right:3px solid var(--gold)}
+.hekmatCard .ask h4{margin:0 0 8px;color:#64532d;font-size:.95rem}
+.hekmatCard .ask p{margin:0;color:#64532d;font-size:.9rem}
+.hekmatCard .source{color:var(--muted);font-size:.82rem;margin-top:12px;text-align:left}
+
+.storyCard{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:26px;margin-bottom:22px;box-shadow:0 8px 25px rgba(20,52,43,.04)}
+.storyCard h3{color:var(--green);margin:0 0 15px;font-size:1.3rem}
+.storyCard .story{font-size:1rem;line-height:2;color:#4c554c;padding:16px;background:var(--soft);border-radius:14px;margin:15px 0}
+.storyCard .kalame{background:#efe8d7;border-right:4px solid var(--gold);padding:16px 20px;border-radius:12px;margin:15px 0}
+.storyCard .kalame .ar{color:var(--green);font-weight:700;font-size:1.1rem;text-align:center;margin:8px 0}
+.storyCard .kalame .fa{color:#4c554c;font-size:.92rem}
+.storyCard .challenge{background:#fff7e4;border:1px solid #ead9aa;padding:16px;border-radius:12px;margin:15px 0}
+.storyCard .challenge h4{margin:0 0 8px;color:#64532d}
+.storyCard .challenge p{margin:0;color:#64532d;font-size:.92rem}
+
+.virtueGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.virtueCard{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 8px 25px rgba(20,52,43,.04)}
+.virtueCard h3{color:var(--green);margin:0 0 10px;font-size:1.15rem}
+.virtueCard .desc{color:var(--muted);font-size:.9rem;margin:0 0 12px}
+.virtueCard .habit{background:var(--soft);padding:12px;border-radius:12px;font-size:.9rem;color:#4c554c;margin:10px 0}
+.virtueCard .habit strong{color:var(--green)}
+.checkList{list-style:none;padding:0;margin:12px 0 0}
+.checkList li{display:flex;align-items:center;gap:10px;padding:8px 0;font-size:.9rem;color:#4c554c;border-bottom:1px dashed var(--line)}
+.checkList li:last-child{border:0}
+.checkList input{width:18px;height:18px;accent-color:var(--green);cursor:pointer}
+.checkList label{cursor:pointer;flex:1}
+
+.challengeGrid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin:20px 0}
+.dayCard{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:14px;text-align:center;transition:.2s}
+.dayCard.done{background:var(--soft);border-color:var(--green)}
+.dayCard .dayNum{font-size:.75rem;color:var(--muted);font-weight:700}
+.dayCard .dayTitle{font-size:.85rem;color:var(--green);margin:6px 0;font-weight:600;line-height:1.4}
+.dayCard .checkBtn{border:0;background:var(--gold);color:#20332c;padding:6px 10px;border-radius:8px;font-size:.75rem;font-weight:700;margin-top:6px;width:100%}
+.dayCard.done .checkBtn{background:var(--green);color:#f7f4eb}
+.challengeProgress{background:var(--soft);padding:14px 18px;border-radius:14px;margin:15px 0;display:flex;justify-content:space-between;align-items:center}
+.challengeProgress strong{color:var(--green);font-size:1.1rem}
+.resetBtn{background:transparent;border:1px solid var(--green);color:var(--green);padding:8px 14px;border-radius:10px;font-size:.82rem}
+
+@media(max-width:900px){.challengeGrid{grid-template-columns:repeat(4,1fr)}.links{gap:12px}.links a{font-size:.82rem}}
+@media(max-width:800px){.heroGrid{grid-template-columns:1fr}.heroArt{min-height:230px}.cards{grid-template-columns:1fr 1fr}.links{display:none}.testBand .inner{display:block}.testBand .btn{margin-top:18px}.footerGrid{grid-template-columns:1fr 1fr}.virtueGrid{grid-template-columns:1fr}}
+@media(max-width:540px){.cards,.footerGrid,.resultGrid{grid-template-columns:1fr}.hero{padding:48px 0}.panel{padding:18px}.question{font-size:1.1rem}.navin{min-height:66px}.testBand h2{font-size:1.5rem}.challengeGrid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="wrap">
+    <span>راهی برای شناخت خویشتن و پرورش فضیلت‌ها</span>
+    <span>محتوای اخلاقی و آموزشی، نه تشخیص پزشکی</span>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="wrap navin">
+    <a class="brand" href="#" onclick="showPage('home');return false">
+      <span class="brandmark">✧</span>
+      <span>
+        <strong>نسخه طبیب</strong>
+        <small>درمان جان با کلام امیرالمؤمنین (ع)</small>
+      </span>
+    </a>
+    <div class="links">
+      <a href="#" onclick="showPage('home');return false">خانه</a>
+      <a href="#" onclick="showPage('test');return false">آینه جان</a>
+      <a href="#" onclick="showPage('hekmat');return false">نسخه‌های علوی</a>
+      <a href="#" onclick="showPage('child');return false">همسفر کوچک</a>
+      <a href="#" onclick="showPage('virtues');return false">داروخانه</a>
+      <a href="#" onclick="showPage('challenge');return false">چالش</a>
+      <a href="#" onclick="showPage('about');return false">درباره</a>
+    </div>
+    <button class="btn" onclick="showPage('test')">شروع آینه جان</button>
+  </div>
+</nav>
+
+<main>
+
+<section id="homePage" class="page active" style="padding:0">
+  <header class="hero">
+    <div class="wrap heroGrid">
+      <div>
+        <div class="eyebrow">✦ شناخت، تأمل، رشد</div>
+        <h1>گاهی برای درمان،<br>باید اول <span>خودمان را ببینیم.</span></h1>
+        <p class="lead">«نسخه طبیب» فضایی برای بازخوانی حکمت‌های امیرالمؤمنین (ع)، شناخت لغزش‌های اخلاقی و تمرین فضیلت‌هاست؛ قدمی کوچک و پیوسته برای ساختن زندگی بهتر.</p>
+        <div class="heroActions">
+          <button class="btn gold" onclick="showPage('test')">آغاز آزمون آینه جان ←</button>
+          <button class="btn outline" onclick="showPage('about')">آشنایی با روش کار</button>
+        </div>
+        <p class="small" style="margin-top:14px">آزمون برای خودشناسی و تأمل طراحی شده و جایگزین ارزیابی تخصصی روان‌شناختی نیست.</p>
+      </div>
+      <div class="heroArt">
+        <div class="mirror">✧</div>
+        <p>«مَن عَرَفَ نَفسَهُ فَقَد عَرَفَ رَبَّهُ» — عبارت مشهور؛ انتساب و منبع نیازمند بررسی مستقل</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sectionHead">
+        <h2>در این مسیر چه می‌یابید؟</h2>
+        <p>از شناخت یک رفتار تا تمرین یک فضیلت؛ بدون قضاوت و برچسب‌زدن.</p>
+      </div>
+      <div class="cards">
+        <div class="card" onclick="showPage('test')" style="cursor:pointer">
+          <div class="ico">🪞</div>
+          <h3>آینه جان</h3>
+          <p>۴۰ پرسش تأملی در هشت حوزه اخلاقی و رفتاری؛ همراه با گزارشی روشن از پاسخ‌های خودتان.</p>
+        </div>
+        <div class="card" onclick="showPage('hekmat')" style="cursor:pointer">
+          <div class="ico">📜</div>
+          <h3>نسخه‌های علوی</h3>
+          <p>تأمل در حکمت‌ها و نامه‌های نهج‌البلاغه و پیوند دادن آن‌ها با انتخاب‌های روزمره.</p>
+        </div>
+        <div class="card" onclick="showPage('virtues')" style="cursor:pointer">
+          <div class="ico">🌱</div>
+          <h3>داروخانه فضیلت‌ها</h3>
+          <p>تمرین‌هایی کوچک برای پرورش صبر، گذشت، تواضع، انصاف، قناعت و مهربانی.</p>
+        </div>
+        <div class="card" onclick="showPage('child')" style="cursor:pointer">
+          <div class="ico">🧒</div>
+          <h3>همسفر کوچک</h3>
+          <p>داستان‌ها و فعالیت‌های ساده برای آشنایی کودکان با مفاهیم اخلاقی.</p>
+        </div>
+        <div class="card" onclick="showPage('challenge')" style="cursor:pointer">
+          <div class="ico">🎯</div>
+          <h3>چالش خودسازی</h3>
+          <p>گام‌های کوتاه و قابل انجام برای تبدیل دانسته‌ها به رفتارهای روزانه.</p>
+        </div>
+        <div class="card" onclick="showPage('ailments')" style="cursor:pointer">
+          <div class="ico">📚</div>
+          <h3>حوزه‌های اخلاقی</h3>
+          <p>شناخت هشت حوزه تأمل اخلاقی با تمرین‌های پیشنهادی برای هر حوزه.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testBand">
+    <div class="wrap inner">
+      <div>
+        <h2>آماده‌ای کمی دقیق‌تر به خودت نگاه کنی؟</h2>
+        <p>آزمون آینه جان قرار نیست به تو برچسب بزند؛ قرار است نقطه شروعی برای تأمل باشد.</p>
+      </div>
+      <button class="btn" onclick="showPage('test')">شروع آزمون ۴۰ سؤالی ←</button>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="quote">
+        <strong>یادآوری:</strong> هیچ‌کس با یک آزمون تعریف نمی‌شود. پاسخ‌های امروز شما تصویری محدود از تجربه‌ها و برداشت‌های خودتان در یک بازه زمانی مشخص‌اند؛ انسان می‌تواند یاد بگیرد، تغییر کند و رشد کند.
+      </div>
+    </div>
+  </section>
+</section>
+<section id="testPage" class="page">
+  <div class="wrap">
+    <div class="pageTitle">
+      <span class="eyebrow">نسخه طبیب / آینه جان</span>
+      <h1>آزمون خودشناسی اخلاقی</h1>
+      <p>۴۰ پرسش در ۸ حوزه؛ حدود ۸ تا ۱۲ دقیقه.</p>
+    </div>
+
+    <div id="introPanel" class="panel">
+      <div class="notice"><strong>پیش از شروع:</strong> این پرسش‌نامه ابزار آموزشی و تأمل شخصی است؛ آزمون بالینی یا تشخیص روان‌شناختی نیست. پاسخ درست یا غلط وجود ندارد.</div>
+      <h3 style="color:var(--green)">چطور پاسخ بدهم؟</h3>
+      <p>به تجربه و رفتار معمول خود در <strong>سه ماه گذشته</strong> فکر کن. پاسخ صادقانه و بدون سرزنش خودت، گزارش را مفیدتر می‌کند.</p>
+      <p class="small">در هر حوزه، سه پرسش درباره دشواری‌ها و دو پرسش درباره توانایی‌های سازنده است. پاسخ پرسش‌های توانمندی معکوس محاسبه می‌شود؛ بنابراین امتیاز بالاتر در همه حوزه‌ها یعنی گزارش بیشترِ دشواری.</p>
+      <div class="cards" style="grid-template-columns:repeat(5,1fr);gap:8px;margin-top:15px">
+        <div class="card" style="padding:10px;text-align:center"><b>هرگز</b><br><span class="small">۰</span></div>
+        <div class="card" style="padding:10px;text-align:center"><b>به‌ندرت</b><br><span class="small">۱</span></div>
+        <div class="card" style="padding:10px;text-align:center"><b>گاهی</b><br><span class="small">۲</span></div>
+        <div class="card" style="padding:10px;text-align:center"><b>اغلب</b><br><span class="small">۳</span></div>
+        <div class="card" style="padding:10px;text-align:center"><b>تقریباً همیشه</b><br><span class="small">۴</span></div>
+      </div>
+      <label class="consent"><input id="startConsent" type="checkbox"><span>می‌دانم این آزمون صرفاً برای خودشناسی و آموزش است و نتیجه آن تشخیص یا برچسب روان‌شناختی محسوب نمی‌شود.</span></label>
+      <button class="btn" id="beginBtn" disabled onclick="beginTest()">شروع پاسخ‌گویی ←</button>
+      <p class="small">پاسخ‌ها فقط در مرورگر شما ذخیره می‌شوند و به سرور ارسال نمی‌شوند.</p>
+    </div>
+
+    <div id="quizPanel" class="panel hidden">
+      <div class="qtop">
+        <span id="domainLabel">حوزه اول</span>
+        <span id="qCount">پرسش ۱ از ۴۰</span>
+      </div>
+      <div class="progressWrap"><div class="progress" id="progress"></div></div>
+      <div class="question" id="questionText"></div>
+      <div class="answers" id="answerList"></div>
+      <div class="qactions">
+        <button class="btn outline" id="prevBtn" onclick="moveQuestion(-1)">→ قبلی</button>
+        <button class="btn" id="nextBtn" disabled onclick="moveQuestion(1)">بعدی ←</button>
+      </div>
+    </div>
+
+    <div id="reportPageInline" class="panel hidden"></div>
+  </div>
+</section>
+
+<section id="reportPage" class="page">
+  <div class="wrap">
+    <div class="pageTitle">
+      <span class="eyebrow">گزارش شخصی</span>
+      <h1>گزارش آینه جان</h1>
+      <p>این گزارش بر اساس پاسخ‌های همین نوبت تهیه شده است.</p>
+    </div>
+    <div id="reportContent" class="panel"></div>
+  </div>
+</section>
+
+<section id="ailmentsPage" class="page">
+  <div class="wrap">
+    <div class="pageTitle">
+      <span class="eyebrow">شناخت بدون قضاوت</span>
+      <h1>حوزه‌های تأمل اخلاقی</h1>
+      <p>این عنوان‌ها برای بررسی رفتارها و عادت‌ها هستند، نه نام‌گذاری شخصیت افراد.</p>
+    </div>
+    <div class="cards" id="domainCards"></div>
+  </div>
+</section>
+
+<section id="hekmatPage" class="page">
+  <div class="wrap">
+    <div class="pageTitle">
+      <span class="eyebrow">از حکمت تا عمل</span>
+      <h1>نسخه‌های علوی</h1>
+      <p>متن عربی، ترجمه، لغات کلیدی و تأمل در حکمت‌های نهج‌البلاغه.</p>
+    </div>
+    <div class="notice" style="margin-bottom:20px">
+      📢 برای دریافت حکمت‌های روزانه، به کانال ایتای <a href="https://eitaa.com/hamsafarkalamali" target="_blank" style="color:var(--green);font-weight:700">همسفر کلام علی</a> بپیوندید.
+    </div>
+    <div id="hekmatList"></div>
+  </div>
+</section>
+
+<section id="childPage" class="page">
+  <div class="wrap">
+    <div class="pageTitle">
+      <span class="eyebrow">برای کوچک‌ترها</span>
+      <h1>همسفر کوچک</h1>
+      <p>داستان‌هایی برای آشنایی کودکان با مفاهیم اخلاقی.</p>
+    </div>
+    <div id="childList"></div>
+  </div>
+</section>
+
+<section id="virtuesPage" class="page">
+  <div class="wrap">
+    <div class="pageTitle">
+      <span class="eyebrow">تمرین روزانه</span>
+      <h1>داروخانه فضیلت‌ها</h1>
+      <p>هشت فضیلت با تمرین‌های روزانه. تیک‌ها در مرورگر شما ذخیره می‌شوند.</p>
+    </div>
+    <div class="virtueGrid" id="virtueList"></div>
+  </div>
+</section>
+
+<section id="challengePage" class="page">
+  <div class="wrap">
+    <div class="pageTitle">
+      <span class="eyebrow">گام‌های کوچک</span>
+      <h1>چالش خودسازی ۷ روزه</h1>
+      <p>هر روز یک تمرین کوچک؛ پیشرفت شما ذخیره می‌شود.</p>
+    </div>
+    <div class="panel">
+      <div class="challengeProgress">
+        <span>پیشرفت شما: <strong id="chProgress">۰ از ۷</strong></span>
+        <button class="resetBtn" onclick="resetChallenge()">شروع دوباره</button>
+      </div>
+      <div class="challengeGrid" id="challengeGrid"></div>
+      <div class="notice" style="margin-top:15px">
+        <strong>یادآوری:</strong> هدف، کامل بودن نیست؛ فقط قدم کوچک و مداوم است. اگر روزی را از دست دادی، فردا ادامه بده.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="aboutPage" class="page">
+  <div class="wrap">
+    <div class="pageTitle">
+      <span class="eyebrow">درباره نسخه طبیب</span>
+      <h1>درمان جان با کلام امیرالمؤمنین (ع)</h1>
+      <p>طرحی آموزشی برای پیوند خودشناسی، اخلاق و عمل روزانه.</p>
+    </div>
+    <div class="panel">
+      <h3 style="color:var(--green)">مبنای اخلاقی</h3>
+      <p>مفاهیم اخلاقی با مطالعه دقیق نهج‌البلاغه و منابع معتبر شرح و ترجمه بررسی می‌شوند.</p>
+      <h3 style="color:var(--green)">مبنای روان‌شناختی</h3>
+      <p>از مفاهیم عمومی معتبر مانند خودآگاهی، تنظیم هیجان، همدلی و خودنظم‌دهی برای طراحی تمرین‌ها استفاده می‌شود؛ نه برای تشخیص اختلال.</p>
+      <h3 style="color:var(--green)">حریم خصوصی</h3>
+      <p>هیچ حساب کاربری یا پایگاه داده‌ای وجود ندارد. نتایج آزمون، تیک‌های فضیلت‌ها و پیشرفت چالش فقط در مرورگر خود شما (localStorage) ذخیره می‌شوند.</p>
+      <h3 style="color:var(--green)">محدودیت علمی</h3>
+      <p>پرسش‌نامه فعلی نسخه اولیه و تأملی است. برای ادعای اعتبار روان‌سنجی، به داوری متخصص و مطالعه پایلوت نیاز داریم.</p>
+      <h3 style="color:var(--green)">ارتباط با ما</h3>
+      <p>برای همراهی روزانه با کلام امیرالمؤمنین (ع):</p>
+      <p><a href="https://eitaa.com/hamsafarkalamali" target="_blank" class="btn">📢 کانال ایتا: همسفر کلام علی</a></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footerGrid">
+      <div>
+        <h3>نسخه طبیب</h3>
+        <p>درمان جان با کلام امیرالمؤمنین (ع)</p>
+        <p>شناخت خویشتن، پرورش فضیلت و قدم‌های کوچک برای زندگی آگاهانه‌تر.</p>
+      </div>
+      <div>
+        <h3>بخش‌ها</h3>
+        <a href="#" onclick="showPage('test');return false">آینه جان</a>
+        <a href="#" onclick="showPage('hekmat');return false">نسخه‌های علوی</a>
+        <a href="#" onclick="showPage('child');return false">همسفر کوچک</a>
+        <a href="#" onclick="showPage('virtues');return false">داروخانه فضیلت‌ها</a>
+        <a href="#" onclick="showPage('challenge');return false">چالش خودسازی</a>
+      </div>
+      <div>
+        <h3>ارتباط با ما</h3>
+        <p>برای همراهی روزانه:</p>
+        <a href="https://eitaa.com/hamsafarkalamali" target="_blank">📢 کانال ایتا: همسفر کلام علی</a>
+        <p class="small" style="margin-top:15px">این وب‌سایت محتوای آموزشی و اخلاقی ارائه می‌کند و جایگزین روان‌شناس یا مشاور واجد صلاحیت نیست.</p>
+      </div>
+    </div>
+    <div class="copy">© نسخه طبیب | طراحی شده برای شناخت خویشتن و پرورش فضیلت‌ها</div>
+  </div>
+</footer>
+<script>
+function showPage(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const map = {home:'homePage', test:'testPage', hekmat:'hekmatPage', child:'childPage', virtues:'virtuesPage', challenge:'challengePage', ailments:'ailmentsPage', about:'aboutPage', report:'reportPage'};
+  const id = map[name] || 'homePage';
+  const el = document.getElementById(id);
+  if(el){ el.classList.add('active'); window.scrollTo({top:0,behavior:'smooth'}); }
+  if(name==='challenge') renderChallenge();
+  if(name==='virtues') renderVirtues();
+}
+
+const domains = [
+ {name:"خشم و تنظیم هیجان",desc:"لحظه‌ای که ممکن است پشیمانی به بار آورد.",tip:"امام علی (ع): «الْحِدَّةُ ضَرْبٌ مِنَ الْجُنُونِ...» خشم شدید نوعی دیوانگی است. راهکار: واکنش را به تأخیر بینداز، زبانت را مدیریت کن و بعد از آرام شدن مسئله را حل کن.",ref:"حکمت ۲۵۵ و ۱۹۴"},
+ {name:"حسادت و مقایسه",desc:"زخمی که پیش از دیگران، خودمان را می‌آزارد.",tip:"امام علی (ع): «صِحَّةُ الْجَسَدِ مِنْ قِلَّةِ الْحَسَدِ» سلامت بدن از کمی حسادت است. راهکار: موفقیت دیگری چیزی از ارزش تو کم نمی‌کند؛ برای رشد خودت تلاش کن.",ref:"حکمت ۲۱۸ و ۲۵۶"},
+ {name:"تواضع و پذیرش نقد",desc:"بزرگی در فروتنی است، نه در برتری‌جویی.",tip:"امام علی (ع): «وَبِالتَّوَاضُعِ تَتِمُّ النِّعْمَةُ» با فروتنی نعمت کامل می‌شود. راهکار: وقتی دلیلی برای فخرفروشی داری، فروتنی را انتخاب کن.",ref:"حکمت ۲۲۴ و نامه ۵۳"},
+ {name:"کینه و گذشت",desc:"آزاد کردن دل از اسارت کینه.",tip:"امام علی (ع): «إِذَا قَدَرْتَ عَلَى عَدُوِّكَ، فَاجْعَلِ الْعَفْوَ عَنْهُ شُكْراً لِلْقُدْرَةِ عَلَيْهِ» گذشت، زکات پیروزی است. راهکار: کینه را رها کن تا آرامش را بازپس بگیری.",ref:"حکمت ۱۰ و ۲۱۱"},
+ {name:"حرص و دلبستگی به دنیا",desc:"سیری‌ناپذیری‌ای که آرامش را می‌گیرد.",tip:"امام علی (ع): «وَإِنْ هَاجَ بِهِ الطَّمَعُ أَهْلَكَهُ الْحِرْصُ» حرص او را هلاک می‌کند. راهکار: قناعت یعنی برای پیشرفت تلاش کن، اما آرامشت را به بیشتر داشتن گره نزن.",ref:"حکمت ۱۰۸ و ۲۲۸"},
+ {name:"ترس از قضاوت و تأییدطلبی",desc:"وقتی نگاه مردم، قطب‌نمای زندگی ما می‌شود.",tip:"امام علی (ع): «يَكَادُ أَفْضَلُهُمْ رَأْياً يَرُدُّهُ عَنْ فَضْلِ رَأْيِهِ الرِّضَا وَالسُّخْطُ» رضایت دیگران نباید جای حقیقت را بگیرد. راهکار: در برابر وجدان و حقیقت سربلند باش.",ref:"حکمت ۳۴۳"},
+ {name:"خودخواهی و همدلی",desc:"دیدن دیگران از دریچهٔ دل.",tip:"امام علی (ع): «أَوَ أَبِيتَ مِبْطَاناً وَحَوْلِي بُطُونٌ غَرْثَى؟» آیا با شکمی سیر بخوابم و اطرافم گرسنه باشند؟ راهکار: خودت را جای طرف مقابل بگذار.",ref:"نامه ۴۵ و ۵۳"},
+ {name:"صبر و خویشتن‌داری",desc:"قدرتی فراتر از واکنش نشان دادن.",tip:"امام علی (ع): «الصَّبْرُ صَبْرَانِ: صَبْرٌ عَلَى مَا تَكْرَهُ، وَصَبْرٌ عَمَّا تُحِبُّ» صبر دو گونه است. راهکار: پیش از واکنش، لحظه‌ای درنگ کن.",ref:"حکمت ۵۵ و ۲۱۱"}
+];
+
+const questions = [
+ ["وقتی ناراحت می‌شوم، گاهی لحن یا رفتارم تندتر از چیزی می‌شود که قصد داشتم.",0,false],["در زمان اختلاف، می‌توانم مکث کنم و پیش از پاسخ‌دادن آرام‌تر شوم.",0,true],["وقتی تحت فشارم، ممکن است ناراحتی‌ام را سر کسی خالی کنم که علت اصلی آن نبوده است.",0,false],["حتی هنگام عصبانیت، معمولاً می‌توانم خواسته‌ام را بدون توهین یا تهدید بیان کنم.",0,true],["بعد از واکنش تند، گاهی به‌سختی سهم خودم را در پیش‌آمد بررسی می‌کنم.",0,false],
+ ["دیدن موفقیت دیگران گاهی باعث می‌شود از زندگی یا توانایی‌های خودم ناراضی شوم.",1,false],["می‌توانم از موفقیت دیگری خوشحال شوم، حتی اگر خودم هنوز به آن هدف نرسیده باشم.",1,true],["وقتی فردی مورد توجه قرار می‌گیرد، گاهی احساس می‌کنم سهم یا ارزش من کمتر شده است.",1,false],["معمولاً به‌جای مقایسه خودم با دیگران، پیشرفت خودم را با گذشته خودم می‌سنجم.",1,true],["گاهی ذهنم مدت زیادی درگیر این می‌شود که چرا دیگری چیزی دارد که من ندارم.",1,false],
+ ["وقتی متوجه اشتباهم می‌شوم، معمولاً می‌توانم آن را بپذیرم و اصلاح کنم.",2,true],["در گفت‌وگوها گاهی فرض می‌کنم برداشت من از موضوع از برداشت دیگران درست‌تر است.",2,false],["می‌توانم بدون اینکه فوراً از خودم دفاع کنم، به انتقاد محترمانه گوش بدهم.",2,true],["گاهی برایم مهم است در جمع ثابت کنم که از دیگران آگاه‌تر یا توانمندترم.",2,false],["اگر کسی نکته درستی بگوید، حتی اگر از من کم‌تجربه‌تر باشد، می‌توانم آن را بپذیرم.",2,true],
+ ["پس از اختلاف، گاهی رنجش را بارها در ذهنم مرور می‌کنم.",3,false],["می‌توانم میان بخشیدن یک خطا و اعتماد دوباره به فرد تفاوت بگذارم.",3,true],["حتی بعد از حل‌شدن یک مسئله، گاهی از فرصت‌های بعدی برای یادآوری آن استفاده می‌کنم.",3,false],["اگر امنیت و احترامم حفظ شود، می‌توانم برای ترمیم رابطه قدمی بردارم.",3,true],["گاهی تا مدت‌ها منتظرم طرف مقابل ابتدا عذرخواهی کند، حتی اگر من هم سهمی داشته باشم.",3,false],
+ ["نگرانی درباره پول، دارایی یا موقعیت گاهی بیش از اندازه ذهنم را مشغول می‌کند.",4,false],["می‌توانم از داشته‌های فعلی‌ام لذت ببرم، حتی وقتی هنوز هدف‌های بیشتری دارم.",4,true],["گاهی برای به‌دست‌آوردن امکانات بیشتر، از زمان استراحت یا رابطه‌های مهمم می‌زنم.",4,false],["پیش از خرید یا دنبال‌کردن یک خواسته تازه، نیاز واقعی‌ام را بررسی می‌کنم.",4,true],["گاهی ارزش خودم یا دیگران را بیش از حد با درآمد، دارایی یا جایگاه می‌سنجم.",4,false],
+ ["برای تصمیم‌های شخصی، بیش از اندازه نگرانم که دیگران چه قضاوتی خواهند کرد.",5,false],["می‌توانم در صورت نیاز، درخواست نامناسبی را محترمانه رد کنم.",5,true],["گاهی برای راضی نگه‌داشتن دیگران، برخلاف خواسته یا ارزش مهم خودم رفتار می‌کنم.",5,false],["حتی اگر دیگران با انتخابم موافق نباشند، می‌توانم دلیل تصمیمم را با آرامش توضیح بدهم.",5,true],["بعد از یک گفت‌وگو، گاهی مدت زیادی واکنش دیگران را در ذهنم مرور می‌کنم.",5,false],
+ ["در گفت‌وگو گاهی آن‌قدر به پاسخ خودم فکر می‌کنم که حرف طرف مقابل را کامل نمی‌شنوم.",6,false],["پیش از پیشنهاد راه‌حل، معمولاً تلاش می‌کنم احساس و نیاز طرف مقابل را بفهمم.",6,true],["وقتی با کسی اختلاف دارم، دیدن موضوع از زاویه او برایم دشوار می‌شود.",6,false],["اگر کمک کوچکی از من برآید، معمولاً به شرایط و توان خودم توجه می‌کنم و در حد امکان همراهی می‌کنم.",6,true],["گاهی نیازهای خودم را چنان مقدم می‌دانم که اثر رفتارم بر دیگران را نادیده می‌گیرم.",6,false],
+ ["وقتی نتیجه کاری دیر مشخص می‌شود، گاهی انگیزه‌ام را زود از دست می‌دهم.",7,false],["می‌توانم برای رسیدن به هدفی مهم، بعضی خواسته‌های فوری را به تعویق بیندازم.",7,true],["به تعویق‌انداختن کار مهم، با وجود آگاهی از پیامدهایش، برایم تکرار می‌شود.",7,false],["در برابر تأخیرها و ناکامی‌های کوچک، معمولاً فرصت می‌دهم تا شرایط را دوباره بررسی کنم.",7,true],["پایبندی به تصمیم مفیدی که برای خودم گرفته‌ام، گاهی دشوار می‌شود.",7,false]
+];
+
+const opts = [["هرگز",0],["به‌ندرت",1],["گاهی",2],["اغلب",3],["تقریباً همیشه",4]];
+let answers = Array(40).fill(null);
+let current = 0;
+let latestScores = null;
+
+document.addEventListener('DOMContentLoaded', ()=>{ const sc = document.getElementById('startConsent'); if(sc) sc.addEventListener('change', e=>{ document.getElementById('beginBtn').disabled = !e.target.checked; }); });
+function beginTest(){ document.getElementById('introPanel').classList.add('hidden'); document.getElementById('quizPanel').classList.remove('hidden'); renderQuestion(); }
+function renderQuestion(){ const [q,d] = questions[current]; document.getElementById('domainLabel').textContent = 'حوزه ' + (d+1) + ' از ۸: ' + domains[d].name; document.getElementById('qCount').textContent = 'پرسش ' + (current+1) + ' از ۴۰'; document.getElementById('progress').style.width = ((current+1)/40*100) + '%'; document.getElementById('questionText').textContent = q; const list = document.getElementById('answerList'); list.innerHTML = ''; opts.forEach(([label,val])=>{ const l = document.createElement('label'); l.className = 'answer' + (answers[current]===val?' selected':''); l.innerHTML = `<input type="radio" name="answer" value="${val}" ${answers[current]===val?'checked':''}><span>${label}</span>`; l.addEventListener('click', ()=>{ answers[current] = val; renderQuestion(); }); list.appendChild(l); }); document.getElementById('prevBtn').disabled = current===0; document.getElementById('nextBtn').disabled = answers[current]===null; document.getElementById('nextBtn').textContent = current===39 ? 'مشاهده گزارش ←' : 'بعدی ←'; }
+function moveQuestion(dir){ if(dir===1 && answers[current]===null) return; if(current===39 && dir===1){ calculateResults(); return; } current = Math.max(0, Math.min(39, current+dir)); renderQuestion(); }
+function level(score){ if(score<25) return ['کمتر گزارش‌شده','در پاسخ‌های این نوبت، دشواری‌های این حوزه کمتر گزارش شده‌اند؛ این نتیجه به معنی نبود کامل چالش نیست.']; if(score<50) return ['گاه‌به‌گاه گزارش‌شده','برخی موقعیت‌ها ممکن است در این حوزه برای شما چالش‌برانگیز باشند.']; if(score<75) return ['بیشتر گزارش‌شده','پاسخ‌ها نشان می‌دهند این حوزه می‌تواند موضوع مناسبی برای توجه و تمرین آگاهانه باشد.']; return ['بسیار پرتکرار در پاسخ‌ها','در این نوبت، دشواری‌های این حوزه بیشتر گزارش شده‌اند؛ بهتر است آن را با کنجکاوی و بدون سرزنش بررسی کنید.']; }
+function calculateResults(){ const scores = domains.map((_,d)=>{ const idx = questions.map((q,i)=>q[1]===d?i:null).filter(i=>i!==null); const vals = idx.map(i=> questions[i][2] ? (4-answers[i]) : answers[i]); return Math.round(vals.reduce((a,b)=>a+b,0)/(vals.length*4)*100); }); latestScores = scores; try{ localStorage.setItem('noskheh_scores', JSON.stringify(scores)); localStorage.setItem('noskheh_scores_date', new Date().toISOString()); }catch(e){} document.getElementById('quizPanel').classList.add('hidden'); document.getElementById('reportPageInline').classList.remove('hidden'); buildReport(); showPage('report'); }
+function buildReport(){ if(!latestScores) return; const sorted = domains.map((d,i)=>({d,i,s:latestScores[i]})).sort((a,b)=>b.s-a.s); const date = new Date().toLocaleDateString('fa-IR'); let out = `<div class="reportIntro"><span class="pill">گزارش شخصی آینه جان</span><h2>این گزارش، آغازی برای تأمل است؛ نه حکمی درباره شخصیت تو.</h2><p>تاریخ تهیه: ${date}</p><p>در هر حوزه، امتیاز بالاتر یعنی دشواری‌های آن حوزه بیشتر گزارش شده‌اند. امتیازها فقط خلاصه پاسخ‌های خوداظهاری شما هستند؛ نه تشخیص، نه قضاوت اخلاقی و نه مقایسه با دیگران.</p></div>`; out += '<h3 style="color:var(--green)">نمای کلی هشت حوزه</h3><div class="resultGrid">'; sorted.forEach(x=>{ const [lv] = level(x.s); out += `<div class="scoreCard"><div class="scoreHead"><span>${x.d.name}</span><span>${x.s} از ۱۰۰</span></div><div class="bar"><span style="width:${x.s}%"></span></div><div class="level">${lv}</div></div>`; }); out += '</div><h3 style="color:var(--green)">پیشنهادهای رشد (سه حوزه پررنگ‌تر)</h3>'; sorted.slice(0,3).forEach(x=>{ const [lv] = level(x.s); out += `<div class="domainReport"><h3>${x.d.name} — ${lv}</h3><p>${x.d.desc}</p><div class="notice" style="margin:10px 0;"><p><strong>کلام امیرالمؤمنین (ع):</strong> ${x.d.tip}</p><p class="small">منبع: ${x.d.ref}</p></div></div>`; }); out += `<div class="notice" style="margin-top:20px"><strong>یادآوری:</strong> این پرسش‌نامه نسخه اولیه تأملی است و هنوز روایی و پایایی آن در پژوهش مستقل بررسی نشده است. برای بررسی مشکلات روان‌شناختی، با متخصص واجد صلاحیت گفت‌وگو کنید.</div>`; out += `<div class="resultActions"><button class="btn" onclick="window.print()">چاپ / ذخیره PDF</button><button class="btn outline" onclick="copyReport()">کپی گزارش</button><button class="btn outline" onclick="resetTest()">شروع دوباره آزمون</button><button class="btn outline" onclick="showPage('home')">بازگشت به خانه</button></div>`; document.getElementById('reportContent').innerHTML = out; }
+function copyReport(){ if(!latestScores) return; const sorted = domains.map((d,i)=>({d,i,s:latestScores[i]})).sort((a,b)=>b.s-a.s); let t = 'گزارش شخصی آینه جان | نسخه طبیب\nاین گزارش آموزشی و تأملی است و تشخیص روان‌شناختی نیست.\n\n'; sorted.forEach(x=>{ t += `${x.d.name}: ${x.s} از ۱۰۰ — ${level(x.s)[0]}\n${x.d.desc}\nکلام امیرالمؤمنین: ${x.d.tip} (${x.d.ref})\n\n`; }); t += 'توضیح: این پرسش‌نامه نسخه اولیه است؛ روایی، پایایی و مرزهای امتیاز آن هنوز در مطالعه مستقل روان‌سنجی بررسی نشده‌اند.'; if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(()=>alert('گزارش کپی شد ✓')).catch(()=>alert('کپی ممکن نشد. از دکمه چاپ استفاده کنید.')); } else { alert('کپی خودکار در این مرورگر در دسترس نیست. از دکمه چاپ / ذخیره PDF استفاده کنید.'); } }
+function resetTest(){ answers = Array(40).fill(null); current = 0; const intro = document.getElementById('introPanel'); const quiz = document.getElementById('quizPanel'); const rep = document.getElementById('reportPageInline'); if(intro) intro.classList.remove('hidden'); if(quiz) quiz.classList.add('hidden'); if(rep) rep.classList.add('hidden'); const sc = document.getElementById('startConsent'); if(sc) sc.checked = false; const bb = document.getElementById('beginBtn'); if(bb) bb.disabled = true; }
+const domainIcons = ['🌿','🌼','🪶','🕊️','🍃','🧭','🤝','⏳'];
+function renderDomainCards(){ const el = document.getElementById('domainCards'); if(!el) return; el.innerHTML = domains.map((d,i)=>`<div class="card"><div class="ico">${domainIcons[i]}</div><h3>${d.name}</h3><p>${d.desc}</p><p style="margin-top:12px"><strong style="color:var(--green)">تمرین:</strong> ${d.tip}</p></div>`).join(''); }
+const hekmats = [
+  {number: 134, arabic: "لَا يَكُونُ الصَّدِيقُ صَدِيقاً حَتَّى يَحْفَظَ أَخَاهُ فِي ثَلَاثٍ: فِي نَكْبَتِهِ وَ غَيْبَتِهِ وَ وَفَاتِهِ.", translation: "دوست، دوست واقعی نیست مگر آنکه بر برادر (رفیق) خود در سه حالت وفادار باشد: در سختی و مصیبت، در غیاب او، و در هنگام مرگ او.", words: [{ar:"نَکْبَة",fa:"سختی، مصیبت و گرفتاری"},{ar:"غَيْبَة",fa:"غیاب، نبودن و زمانی که فرد حضور ندارد"}], reflect: ["آزمونِ مصیبت (نکبت): دوستی واقعی در روزهای خوش و رفاه نیست؛ بلکه کسی است که در روزهای تیره و تار و در برابر سختی‌ها، مانند تکیه‌گاهی محکم در کنار تو باشد.","آزمونِ غیاب (غیبت): سخت‌ترین آزمون، زمانی است که تو حضور نداری. آیا رفیق تو در غیاب تو، از نام و اعتبار و حقوق تو دفاع می‌کند؟","آزمونِ وفاداریِ پایانی (وفات): وفاداری به دوست، تنها تا زمانی که او زنده است نیست؛ بلکه رعایت حرمت او و یادکرد نیک او حتی پس از مرگ، نشانه‌ی اصالتِ دوستی است."], ask: "دوستان ما در چه زمانی کیفیتِ واقعیِ خود را نشان می‌دهند؟ ۱. در روزهای خوش ۲. در حضورِ مداوم ۳. در روزهای سختی، غیبت و حتی پس از مرگ ۴. تنها در زمان‌هایی که منافع مشترکی وجود دارد"},
+  {number: 135, arabic: "مَنْ أُعْطِيَ أَرْبَعاً لَمْ يُحْرَمْ أَرْبَعاً؛ مَنْ أُعْطِيَ الدُّعَاءَ لَمْ يُحْرَمِ الْإِجَابَةَ، وَ مَنْ أُعْطِيَ التَّوْبَةَ لَمْ يُحْرَمِ الْقَبُولَ، وَ مَنْ أُعْطِيَ الِاسْتِغْفَارَ لَمْ يُحْرَمِ الْمَغْفِرَةَ، وَ مَنْ أُعْطِيَ الشُّكْرَ لَمْ يُحْرَمِ الزِّيَادَةَ.", translation: "هر کس چهار چیز به او داده شود، از چهار چیز محروم نخواهد شد: هر کس به او توانِ دعا داده شود، از اجابت محروم نمی‌شود؛ و هر کس توانِ توبه داده شود، از پذیرفته شدن محروم نمی‌شود؛ و هر کس توانِ استغفار داده شود، از آمرزش محروم نمی‌شود؛ و هر کس توانِ شکرگزاری داده شود، از نعمتِ افزون محروم نمی‌شود.", words: [{ar:"دُعَاء",fa:"دعا کردن و درخواست از پروردگار"},{ar:"تَوْبَة",fa:"بازگشت از مسیر اشتباه"},{ar:"اِسْتِغْفَار",fa:"طلب بخشش مداوم"},{ar:"شُكْر",fa:"شکرگزاری برای داشته‌های فعلی"}], reflect: ["توانایی، خود یک نعمت است: اینکه انسان بتواند دعا، توبه یا شکر کند، نشانه‌ی این است که خداوند درهای رحمت را به روی او باز کرده است.","پیوندِ عمل و نتیجه: در این حکمت، میانِ هر عمل و نتیجه‌ای الهی، پیوندی ناگسستنی برقرار شده است.","رهایی از محرومیت: کسی که این چهار کلید را در دست داشته باشد، هرگز از نعمت‌های اصلی زندگی محروم نخواهد ماند."], ask: "کدام‌یک در زندگی شما گم شده؟ ۱. دعا کردن ۲. توبه ۳. استغفار ۴. شکرگزاری"},
+  {number: 148, arabic: "الْمَرْءُ مَخْبُوءٌ تَحْتَ لِسَانِهِ.", translation: "شخصیت و حقیقت هر انسان زیر زبان او پنهان است. یعنی از حرف‌های هرکس می‌توانیم به بخشی از فکر، اخلاق و شخصیت او پی ببریم.", words: [{ar:"اَلْمَرْء",fa:"انسان، شخص"},{ar:"مَخْبُوء",fa:"پنهان شده"},{ar:"لِسَان",fa:"زبان"}], reflect: ["زبان، آینه‌ی درون است: آنچه در دل داریم، در گفتار ما نمایان می‌شود.","سکوت حکیمانه: گاهی سکوت، بیش از سخن، شخصیت انسان را نشان می‌دهد.","انتخاب واژه‌ها: واژه‌هایی که انتخاب می‌کنیم، اخلاق و نگاه ما به دیگران را آشکار می‌کنند."], ask: "اگر زبانت یک آینه بود، امروز چه چیزی را در آن می‌دیدی؟ آیا از آنچه می‌گویی راضی هستی؟"},
+  {number: 82, arabic: "أَحْبِبْ حَبِيبَكَ هَوْناً مَا عَسَى أَنْ يَكُونَ بَغِيضَكَ يَوْماً مَا، وَ أَبْغِضْ بَغِيضَكَ هَوْناً مَا عَسَى أَنْ يَكُونَ حَبِيبَكَ يَوْماً مَا.", translation: "دوستت را به اندازه‌ای دوست بدار که ممکن است روزی دشمنت شود؛ و دشمنت را به اندازه‌ای دشمن بدار که ممکن است روزی دوستت شود.", words: [{ar:"هَوْناً",fa:"به اندازه، به اعتدال"}], reflect: ["اعتدال در احساسات: امام (ع) به ما می‌آموزد که در دوستی و دشمنی، از افراط بپرهیزیم.","تغییرپذیری روابط: انسان‌ها و روابط تغییر می‌کنند؛ پس نباید وابستگی افراطی یا کینه‌ی عمیق داشته باشیم.","مرزبندی سالم: این حکمت به معنای بی‌وفایی نیست؛ بلکه به معنای حفظ تعادل و آمادگی برای تحول است."], ask: "آیا در روابط خود، اعتدال را رعایت می‌کنم یا دچار افراط می‌شوم؟"},
+  {number: 38, arabic: "يَا بُنَيَّ احْفَظْ عَنِّي أَرْبَعاً وَ أَرْبَعاً، لَا يَضُرُّكَ مَا عَمِلْتَ مَعَهُنَّ: إِنَّ أَغْنَى الْغِنَى الْعَقْلُ، وَ أَكْبَرَ الْفَقْرِ الْحُمْقُ، وَ أَوْحَشَ الْوَحْشَةِ الْعُجْبُ، وَ أَكْرَمَ الْكَرَمِ الْحُسْنُ الْخُلُقِ.", translation: "ای فرزندم! از من چهار چیز و چهار چیز را به خاطر بسپار که هرگز با داشتن آن‌ها به تو زیانی نمی‌رسد: همانا بی‌نیازترین بی‌نیازی، عقل است؛ و بزرگ‌ترین فقر، حماقت است؛ و وحشتناک‌ترین تنهایی، خودپسندی است؛ و باارزش‌ترین بزرگی، اخلاق نیکوست.", words: [{ar:"الْعَقْل",fa:"خرد، عقل"},{ar:"الْحُمْق",fa:"نادانی، حماقت"},{ar:"الْعُجْب",fa:"خودپسندی، غرور"},{ar:"الْخُلُق",fa:"اخلاق، خوی"}], reflect: ["ثروت واقعی: عقل، بزرگ‌ترین سرمایه است که هیچ‌کس نمی‌تواند آن را از تو بگیرد.","فقر واقعی: نداشتن مال، فقر نیست؛ نادانی، فقر واقعی است.","تنهایی واقعی: خودپسندی، انسان را از دیگران دور می‌کند و باعث تنهایی می‌شود.","بزرگی واقعی: اخلاق نیکو، انسان را بزرگ می‌کند، نه ثروت و جایگاه."], ask: "کدام‌یک از این چهار گنج را در خودم بیشتر دارم و کدام را باید تقویت کنم؟"}
+];
+
+function renderHekmat(){ const el = document.getElementById('hekmatList'); if(!el) return; el.innerHTML = hekmats.map(h=>`<div class="hekmatCard"><span class="num">حکمت ${h.number} نهج‌البلاغه</span><div class="arabic">${h.arabic}</div><div class="trans"><strong>ترجمه:</strong> ${h.translation}</div><div class="words"><h4>🔑 لغات کلیدی:</h4>${h.words.map(w=>`<p><strong>${w.ar}:</strong> ${w.fa}</p>`).join('')}</div><div class="reflect"><h4>🔍 لحظه‌ای تأمل:</h4><ol>${h.reflect.map(r=>`<li>${r}</li>`).join('')}</ol></div><div class="ask"><h4>❓ از خودمان بپرسیم:</h4><p>${h.ask}</p></div><div class="source">منبع: نهج‌البلاغه، حکمت ${h.number} | کانال همسفر کلام علی</div></div>`).join(''); }
+
+const stories = [
+  {title: "🎒 صندوقچه‌ای که قفل نمی‌شد!", intro: "حکمت ۱۴۸ نهج‌البلاغه", story: "در مدرسه، مسابقه‌ای برگزار شده بود. معلم یک صندوقچه زیبا آورده بود و گفت: «داخل این صندوقچه یک هدیه برای کسی است که بتواند راز آن را پیدا کند!»\nبچه‌ها با هیجان دور صندوقچه جمع شدند. سعید گفت: «من از همه باهوش‌ترم! حتماً من می‌تونم قفلش رو باز کنم!» اما هرچه تلاش کرد، موفق نشد.\nبعد نوبت به علی رسید. او به دوستانش گفت: «بیایید با هم فکر کنیم. شاید بتوانیم راهی پیدا کنیم.»\nیکی از بچه‌ها گفت: «شاید باید کلیدش رو پیدا کنیم!» علی با مهربانی جواب داد: «فکر خوبیه! بیا با هم دنبالش بگردیم.»\nآن‌ها با همکاری یکدیگر کلید را پیدا کردند و صندوقچه باز شد.\nمعلم لبخند زد و گفت: «بچه‌ها! امروز فقط صندوقچه باز نشد؛ ما چیز مهم‌تری هم فهمیدیم. از حرف‌های هرکدام شما فهمیدیم چطور فکر می‌کنید و چه اخلاقی دارید. یکی با خودخواهی حرف زد و دیگری با همکاری و احترام.»\nسعید سرش را پایین انداخت و گفت: «حالا فهمیدم بهتره به‌جای اینکه فقط از خودم تعریف کنم، با حرف‌ها و رفتارم خوبی‌هام رو نشون بدم.»", arabic: "الْمَرْءُ مَخْبُوءٌ تَحْتَ لِسَانِهِ.", faTranslation: "شخصیت و حقیقت هر انسان زیر زبان او پنهان است.", challenge: "اگر زبانت یک آینه بود... فرض کن کسی تو را نمی‌شناسد و فقط یک جمله از تو می‌شنود. چه جمله‌ای می‌گویی تا او بفهمد چه ویژگی زیبایی در وجودت داری؟"},
+  {title: "🌳 درختی که با همکاری رشد کرد", intro: "داستانی درباره همدلی و همکاری", story: "در یک روستای سرسبز، بچه‌ها تصمیم گرفتند در حیاط مدرسه درخت بکارند. هر کدام یک نهال کوچک آورد.\nاما مشکل این بود که زمین سخت بود و کاشتن نهال‌ها کار سختی به نظر می‌رسید. یکی از بچه‌ها گفت: «من نمی‌تونم، خیلی سخته!» و نهالش را کنار گذاشت.\nدختری به نام زهرا گفت: «بیایید با هم این کار رو انجام بدیم. من بیل می‌آرم، شما آب بیارید، و با هم چاله‌ها رو حفر کنیم.»\nبچه‌ها قبول کردند. هر کس کاری را به عهده گرفت: یکی چاله می‌کند، یکی آب می‌آورد، یکی نهال را نگه می‌داشت.\nوقتی کار تمام شد، همه خسته اما خوشحال بودند. معلم گفت: «امروز یاد گرفتیم که با همکاری، کارهای سخت آسان می‌شود. هیچ‌کس تنها نیست.»\nسال بعد، آن نهال‌ها درخت‌های زیبایی شده بودند که سایه‌شان به همه می‌رسید.", arabic: "وَ تَعَاوَنُوا عَلَى الْبِرِّ وَ التَّقْوَى.", faTranslation: "و در نیکی و پرهیزگاری با یکدیگر همکاری کنید. (قرآن کریم، مائده: ۲)", challenge: "این هفته یک کار خوب را با یکی از دوستان یا اعضای خانواده‌ات با همکاری انجام بده. بعد بنویس چه احساسی داشتی."},
+  {title: "🌙 چراغی که در تاریکی روشن ماند", intro: "داستانی درباره گذشت و مهربانی", story: "در یک شب تاریک، مردی در کوچه‌ای گم شده بود. پیرمردی که آنجا زندگی می‌کرد، چراغی برداشت و به او کمک کرد راهش را پیدا کند.\nمرد گفت: «شما که مرا نمی‌شناسید، چرا این‌قدر به من مهربانی می‌کنید؟»\nپیرمرد لبخند زد و گفت: «من سال‌ها پیش از این کوچه رد می‌شدم و کسی به من کمک کرد. آن روز فهمیدم که مهربانی، چراغی است که از دستی به دست دیگر می‌رسد.»\nمرد جوان تحت تأثیر قرار گرفت و تصمیم گرفت او هم به دیگران کمک کند. سال‌ها بعد، همان مرد جوان، چراغی شد برای کسانی که در تاریکی بودند.\nمهربانی مثل چراغ است؛ هر چه بیشتر ببخشی، بیشتر روشن می‌شود.", arabic: "الْكَريمُ مَنْ يَبْتَدِئُ بِالْإِحْسانِ.", faTranslation: "بخشنده کسی است که خود آغازگر نیکی باشد.", challenge: "امروز یک کار کوچک مهربانانه برای کسی انجام بده که انتظارش را ندارد. بعد به این فکر کن که آن کار چه تأثیری روی او گذاشت."}
+];
+
+function renderChild(){ const el = document.getElementById('childList'); if(!el) return; el.innerHTML = stories.map(s=>`<div class="storyCard"><h3>${s.title}</h3><p class="small">${s.intro}</p><div class="story">${s.story.replace(/\n/g,'<br>')}</div><div class="kalame"><h4 style="margin:0 0 8px;color:var(--green)">📖 کلام امام علی (ع):</h4><div class="ar">${s.arabic}</div><div class="fa"><strong>ترجمه:</strong> ${s.faTranslation}</div></div><div class="challenge"><h4>🎯 چالش این هفته:</h4><p>${s.challenge}</p></div></div>`).join(''); }
+
+const virtues = [
+  {name: "خشم و تنظیم هیجان", icon: "🔥", desc: "لحظه‌ای که ممکن است پشیمانی به بار آورد.", habit: "امام علی (ع): «الْحِدَّةُ ضَرْبٌ مِنَ الْجُنُونِ» خشم شدید نوعی دیوانگی است. راهکار: واکنش را به تأخیر بینداز، زبانت را مدیریت کن و بعد از آرام شدن مسئله را حل کن.", checklist: ["امروز در برابر ناراحتی مکث کردم","جمله‌ای که باعث ناراحتی بیشتر شود نگفتم","بعد از آرام شدن، مسئله را حل کردم"]},
+  {name: "حسادت و مقایسه", icon: "🌼", desc: "زخمی که پیش از دیگران، خودمان را می‌آزارد.", habit: "امام علی (ع): «صِحَّةُ الْجَسَدِ مِنْ قِلَّةِ الْحَسَدِ» سلامت بدن از کمی حسادت است. راهکار: موفقیت دیگری چیزی از ارزش تو کم نمی‌کند؛ برای رشد خودت تلاش کن.", checklist: ["امروز خودم را با دیگری مقایسه نکردم","برای موفقیت یک نفر خوشحال شدم","یک ویژگی خوب در خودم پیدا کردم"]},
+  {name: "تواضع و پذیرش نقد", icon: "🌿", desc: "بزرگی در فروتنی است، نه در برتری‌جویی.", habit: "امام علی (ع): «وَبِالتَّوَاضُعِ تَتِمُّ النِّعْمَةُ» با فروتنی نعمت کامل می‌شود. راهکار: وقتی دلیلی برای فخرفروشی داری، فروتنی را انتخاب کن.", checklist: ["امروز اشتباهم را پذیرفتم","به نظر مخالف با احترام گوش دادم","از کسی که کمتر دیده می‌شود تشکر کردم"]},
+  {name: "کینه و گذشت", icon: "🕊️", desc: "آزاد کردن دل از اسارت کینه.", habit: "امام علی (ع): «الْعَفْوُ زَكَاةُ الظَّفَرِ» گذشت، زکات پیروزی است. راهکار: کینه را رها کن تا آرامش را بازپس بگیری.", checklist: ["امروز از یک اشتباه کوچک گذشتم","یک رنجش قدیمی را رها کردم","به جای سرزنش، به دنبال راه‌حل بودم"]},
+  {name: "حرص و دلبستگی به دنیا", icon: "🍃", desc: "سیری‌ناپذیری‌ای که آرامش را می‌گیرد.", habit: "امام علی (ع): «أَهْلَكَهُ الْحِرْصُ» حرص او را هلاک می‌کند. راهکار: قناعت یعنی برای پیشرفت تلاش کن، اما آرامشت را به بیشتر داشتن گره نزن.", checklist: ["امروز از داشته‌هایم شکرگزار بودم","خواسته‌ای که نیاز نبود را کنار گذاشتم","به جای مقایسه، پیشرفت خودم را دیدم"]},
+  {name: "ترس از قضاوت و تأییدطلبی", icon: "🧭", desc: "وقتی نگاه مردم، قطب‌نمای زندگی ما می‌شود.", habit: "امام علی (ع): «الرِّضَا وَالسُّخْطُ» رضایت دیگران نباید جای حقیقت را بگیرد. راهکار: در برابر وجدان و حقیقت سربلند باش.", checklist: ["امروز یک تصمیم را بر اساس خواسته خودم گرفتم","به قضاوت دیگران اهمیت ندادم","دلیل تصمیمم را با آرامش توضیح دادم"]},
+  {name: "خودخواهی و همدلی", icon: "🤝", desc: "دیدن دیگران از دریچهٔ دل.", habit: "امام علی (ع): «أَوَ أَبِيتُ مِبْطَانًا...» آیا با شکمی سیر بخوابم و اطرافم گرسنه باشند؟ راهکار: خودت را جای طرف مقابل بگذار.", checklist: ["امروز به یک نفر کمک کردم","به کسی که ناراحت بود توجه کردم","قبل از قضاوت، از زاویه دید او نگاه کردم"]},
+  {name: "صبر و خویشتن‌داری", icon: "⏳", desc: "قدرتی فراتر از واکنش نشان دادن.", habit: "امام علی (ع): «الصَّبْرُ صَبْرَانِ» صبر دو گونه است. راهکار: پیش از واکنش، لحظه‌ای درنگ کن و از خودت بپرس آیا این بهترین انتخاب است؟", checklist: ["امروز قبل از پاسخ تند، مکث کردم","یک خواسته فوری را به تعویق انداختم","به جای واکنش، آگاهانه انتخاب کردم"]}
+];
+
+function renderVirtues(){ const el = document.getElementById('virtueList'); if(!el) return; el.innerHTML = virtues.map((v,i)=>{ const saved = JSON.parse(localStorage.getItem('noskheh_virtue_'+i) || '{}'); return `<div class="virtueCard"><h3>${v.icon} ${v.name}</h3><p class="desc">${v.desc}</p><div class="habit"><strong>تمرین روزانه:</strong> ${v.habit}</div><div class="small" style="margin-top:10px">چک‌لیست امروز:</div><ul class="checkList">${v.checklist.map((c,j)=>`<li><input type="checkbox" id="v${i}c${j}" ${saved[j]?'checked':''} onchange="toggleVirtue(${i},${j},this.checked)"><label for="v${i}c${j}">${c}</label></li>`).join('')}</ul></div>`; }).join(''); }
+function toggleVirtue(vi,ci,checked){ const key = 'noskheh_virtue_'+vi; const saved = JSON.parse(localStorage.getItem(key) || '{}'); saved[ci] = checked; localStorage.setItem(key, JSON.stringify(saved)); }
+
+const challengeDays = [
+  {title:"مکث آگاهانه",desc:"امروز وقتی ناراحت شدی، قبل از پاسخ ۱۰ ثانیه مکث کن."},
+  {title:"تشکر از یک نفر",desc:"به کسی که کمتر دیده می‌شود، صمیمانه تشکر کن."},
+  {title:"گوش دادن کامل",desc:"در یک گفت‌وگو، بدون قطع کردن، کامل گوش بده."},
+  {title:"رها کردن رنجش",desc:"یک رنجش قدیمی را در ذهن رها کن."},
+  {title:"کمک کوچک",desc:"یک کار کوچک برای کسی انجام بده که انتظارش را ندارد."},
+  {title:"صداقت",desc:"امروز حتی در یک موضوع کوچک، کاملاً راست بگو."},
+  {title:"شکرگزاری",desc:"سه نعمت کوچک امروز را بنویس و شکرگزار باش."}
+];
+
+function renderChallenge(){ const grid = document.getElementById('challengeGrid'); if(!grid) return; const saved = JSON.parse(localStorage.getItem('noskheh_challenge') || '[]'); grid.innerHTML = challengeDays.map((d,i)=>{ const done = saved[i]===true; return `<div class="dayCard ${done?'done':''}"><div class="dayNum">روز ${i+1}</div><div class="dayTitle">${d.title}</div><div class="small" style="margin:6px 0;font-size:.72rem">${d.desc}</div><button class="checkBtn" onclick="toggleChallenge(${i})">${done?'✓ انجام شد':'تیک'}</button></div>`; }).join(''); const doneCount = saved.filter(x=>x).length; const persianNums = ['۰','۱','۲','۳','۴','۵','۶','۷']; document.getElementById('chProgress').textContent = persianNums[doneCount] + ' از ۷'; }
+function toggleChallenge(i){ const saved = JSON.parse(localStorage.getItem('noskheh_challenge') || '[]'); saved[i] = !saved[i]; localStorage.setItem('noskheh_challenge', JSON.stringify(saved)); renderChallenge(); }
+function resetChallenge(){ if(confirm('آیا مطمئنی می‌خواهی پیشرفت چالش را پاک کنی؟')){ localStorage.removeItem('noskheh_challenge'); renderChallenge(); } }
+
+document.addEventListener('DOMContentLoaded', ()=>{ renderDomainCards(); renderHekmat(); renderChild(); renderVirtues(); renderChallenge(); try{ const saved = JSON.parse(localStorage.getItem('noskheh_scores') || 'null'); if(saved && saved.length===8){ latestScores = saved; buildReport(); } }catch(e){} });
+</script>
+</body>
+</html>
