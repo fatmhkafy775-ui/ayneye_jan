@@ -538,7 +538,7 @@ button{cursor:pointer}
       <div class="notice">
         <strong>توجه:</strong> برای دریافت برنامه ۴۰ روزه مخصوص خودت، ابتدا باید آزمون «آینه جان» رو انجام بدی.
       </div>
-      <button class="btn gold" style="margin-top:15px" onclick="resetTest(); showPage('test');">رفتن به آزمون آینه جان ←</button>
+      <button class="btn gold" style="margin-top:15px" onclick="showPage('test');">رفتن به آزمون آینه جان ←</button>
     </div>
 
     <div id="challengeActive" class="panel hidden">
@@ -718,7 +718,14 @@ function calculateResults(){
     const vals = idx.map(i=> questions[i][2] ? (3-answers[i]) : answers[i]); 
     return Math.round(vals.reduce((a,b)=>a+b,0)/(vals.length*3)*100); 
   }); 
-  latestScores = scores; 
+  latestScores = scores;
+  // ذخیره نوع چله بر اساس بالاترین نمره
+const maxScore = Math.max(...scores);
+const maxIndex = scores.indexOf(maxScore);
+currentChallengeData.type = domains[maxIndex].name;
+currentChallengeData.completedDays = []; // ریست کردن روزهای قبلی
+currentChallengeData.startDate = new Date().toISOString();
+localStorage.setItem('noskheh_challenge_data', JSON.stringify(currentChallengeData));
   try{ localStorage.setItem('noskheh_scores', JSON.stringify(scores)); localStorage.setItem('noskheh_scores_date', new Date().toISOString()); }catch(e){} 
   document.getElementById('quizPanel').classList.add('hidden'); 
   document.getElementById('reportPageInline').classList.remove('hidden'); 
