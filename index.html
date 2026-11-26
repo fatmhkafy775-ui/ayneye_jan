@@ -58,6 +58,7 @@ button{cursor:pointer}
 .sectionHead{text-align:center;max-width:720px;margin:0 auto 34px}
 .sectionHead h2{font-size:2rem;color:var(--green);margin:0 0 8px}
 .sectionHead p{color:var(--muted);margin:0}
+
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 8px 25px rgba(20,52,43,.035);transition:.2s}
 .card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
@@ -159,163 +160,32 @@ button{cursor:pointer}
 .checkList input{width:18px;height:18px;accent-color:var(--green);cursor:pointer}
 .checkList label{cursor:pointer;flex:1}
 
-.challengeGrid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin:20px 0}
-.dayCard{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:14px;text-align:center;transition:.2s}
+.challengeGrid{display:grid;grid-template-columns:repeat(auto-fill, minmax(90px, 1fr));gap:10px;margin-top:20px}
+.dayCard{background:var(--paper);border:2px solid var(--line);border-radius:12px;padding:10px;text-align:center;cursor:pointer;transition:all 0.2s ease;position:relative}
+.dayCard:hover{border-color:var(--gold);transform:translateY(-2px)}
 .dayCard.done{background:var(--soft);border-color:var(--green)}
-.dayCard .dayNum{font-size:.75rem;color:var(--muted);font-weight:700}
-.dayCard .dayTitle{font-size:.85rem;color:var(--green);margin:6px 0;font-weight:600;line-height:1.4}
-.dayCard .checkBtn{border:0;background:var(--gold);color:#20332c;padding:6px 10px;border-radius:8px;font-size:.75rem;font-weight:700;margin-top:6px;width:100%}
-.dayCard.done .checkBtn{background:var(--green);color:#f7f4eb}
-.challengeProgress{background:var(--soft);padding:14px 18px;border-radius:14px;margin:15px 0;display:flex;justify-content:space-between;align-items:center}
-.challengeProgress strong{color:var(--green);font-size:1.1rem}
-.resetBtn{background:transparent;border:1px solid var(--green);color:var(--green);padding:8px 14px;border-radius:10px;font-size:.82rem}
+.dayNum{font-size:0.8rem;font-weight:700;color:var(--muted);margin-bottom:5px}
+.dayTask{font-size:0.75rem;color:var(--ink);line-height:1.4;min-height:35px}
+.dayCheck{font-size:1.2rem;margin-top:5px;color:var(--green)}
+.challengeProgressWrap{margin:20px 0}
+.challengeProgressBar{height:10px;background:#e0e0e0;border-radius:10px;overflow:hidden}
+.challengeProgressBar span{display:block;height:100%;background:var(--gold);transition:width 0.3s ease}
+.challengeProgressText{text-align:left;font-size:0.85rem;color:var(--muted);margin-top:5px}
+.resultBox{margin-top:30px;padding:25px;border-radius:20px;background:var(--soft);text-align:center;border:2px solid var(--gold)}
+.resultBox h3{color:var(--green);font-size:1.5rem;margin-bottom:15px}
+.resultHadith{background:#fff7e4;padding:20px;border-radius:15px;margin:15px 0;border-right:4px solid var(--gold);font-size:1.1rem;line-height:1.8}
+.resultHadith .arabic{font-size:1.3rem;font-weight:700;color:var(--green);display:block;margin-bottom:10px}
+.resultMessage{font-size:0.95rem;color:var(--muted);margin-bottom:15px}
+#restartChallengeBtn{background:var(--gold);color:var(--green);font-weight:700;padding:12px 30px;border-radius:50px;border:none;cursor:pointer;transition:all 0.2s ease}
+#restartChallengeBtn:hover{background:#b08d3e;transform:scale(1.05)}
 
-@media(max-width:900px){.challengeGrid{grid-template-columns:repeat(4,1fr)}.links{gap:12px}.links a{font-size:.82rem}}
+@media(max-width:900px){.links{gap:12px}.links a{font-size:.82rem}}
 @media(max-width:800px){.heroGrid{grid-template-columns:1fr}.heroArt{min-height:230px}.cards{grid-template-columns:1fr 1fr}.links{display:none}.testBand .inner{display:block}.testBand .btn{margin-top:18px}.footerGrid{grid-template-columns:1fr 1fr}.virtueGrid{grid-template-columns:1fr}}
 @media(max-width:540px){.cards,.footerGrid,.resultGrid{grid-template-columns:1fr}.hero{padding:48px 0}.panel{padding:18px}.question{font-size:1.1rem}.navin{min-height:66px}.testBand h2{font-size:1.5rem}.challengeGrid{grid-template-columns:repeat(2,1fr)}}
-/* استایل‌های چله ۴۰ روزه */
-.challengeGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.dayCard {
-  background: var(--paper);
-  border: 2px solid var(--line);
-  border-radius: 12px;
-  padding: 10px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  position: relative;
-}
-
-.dayCard:hover {
-  border-color: var(--gold);
-  transform: translateY(-2px);
-}
-
-.dayCard.done {
-  background: var(--soft);
-  border-color: var(--green);
-}
-
-.dayCard.locked {
-  opacity: 0.5;
-  cursor: not-allowed;
-  background: #f0f0f0;
-}
-
-.dayNum {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--muted);
-  margin-bottom: 5px;
-}
-
-.dayTask {
-  font-size: 0.75rem;
-  color: var(--ink);
-  line-height: 1.4;
-  min-height: 35px;
-}
-
-.dayCheck {
-  font-size: 1.2rem;
-  margin-top: 5px;
-  color: var(--green);
-}
-
-.dayCard.done .dayCheck {
-  color: var(--green);
-}
-
-.challengeProgressWrap {
-  margin: 20px 0;
-}
-
-.challengeProgressBar {
-  height: 10px;
-  background: #e0e0e0;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.challengeProgressBar span {
-  display: block;
-  height: 100%;
-  background: var(--gold);
-  transition: width 0.3s ease;
-}
-
-.challengeProgressText {
-  text-align: left;
-  font-size: 0.85rem;
-  color: var(--muted);
-  margin-top: 5px;
-}
-
-.resultBox {
-  margin-top: 30px;
-  padding: 25px;
-  border-radius: 20px;
-  background: var(--soft);
-  text-align: center;
-  border: 2px solid var(--gold);
-}
-
-.resultBox h3 {
-  color: var(--green);
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-}
-
-.resultHadith {
-  background: #fff7e4;
-  padding: 20px;
-  border-radius: 15px;
-  margin: 15px 0;
-  border-right: 4px solid var(--gold);
-  font-size: 1.1rem;
-  line-height: 1.8;
-}
-
-.resultHadith .arabic {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--green);
-  display: block;
-  margin-bottom: 10px;
-}
-
-.resultMessage {
-  font-size: 0.95rem;
-  color: var(--muted);
-  margin-bottom: 15px;
-}
-
-/* دکمه شروع دوباره */
-#restartChallengeBtn {
-  background: var(--gold);
-  color: var(--green);
-  font-weight: 700;
-  padding: 12px 30px;
-  border-radius: 50px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-#restartChallengeBtn:hover {
-  background: #b08d3e;
-  transform: scale(1.05);
-}
 </style>
 </head>
 <body>
-<div class="topbar">
+  <div class="topbar">
   <div class="wrap">
     <span>راهی برای شناخت خویشتن و پرورش فضیلت‌ها</span>
     <span>محتوای اخلاقی و آموزشی، نه تشخیص پزشکی</span>
@@ -345,14 +215,13 @@ button{cursor:pointer}
 </nav>
 
 <main>
-
 <section id="homePage" class="page active" style="padding:0">
   <header class="hero">
     <div class="wrap heroGrid">
       <div>
         <div class="eyebrow">✦ شناخت، تأمل، رشد</div>
         <h1>گاهی برای درمان،<br>باید اول <span>خودمان را ببینیم.</span></h1>
-        <p class="lead">«نسخه طبیب» فضایی برای بازخوانی حکمت‌های امیرالمؤمنین (ع)، شناخت لغزش‌های اخلاقی و تمرین فضیلت‌هاست؛ قدمی کوچک و پیوسته برای ساختن زندگی بهتر.</p>
+        <p class="lead">«قدرت آگاهی» فضایی برای بازخوانی حکمت‌های امیرالمؤمنین (ع)، شناخت لغزش‌های اخلاقی و تمرین فضیلت‌هاست؛ قدمی کوچک و پیوسته برای ساختن زندگی بهتر.</p>
         <div class="heroActions">
           <button class="btn gold" onclick="showPage('test')">آغاز آزمون آینه جان ←</button>
           <button class="btn outline" onclick="showPage('about')">آشنایی با روش کار</button>
@@ -361,7 +230,7 @@ button{cursor:pointer}
       </div>
       <div class="heroArt">
         <div class="mirror">✧</div>
-        <p>«مَن عَرَفَ نَفسَهُ فَقَد عَرَفَ رَبَّهُ» — عبارت مشهور؛ انتساب و منبع نیازمند بررسی مستقل</p>
+        <p>سفری به درون، با چراغ حکمت و کلام امیرالمؤمنین (ع)</p>
       </div>
     </div>
   </header>
@@ -376,7 +245,7 @@ button{cursor:pointer}
         <div class="card" onclick="showPage('test')" style="cursor:pointer">
           <div class="ico">🪞</div>
           <h3>آینه جان</h3>
-          <p>۴۰ پرسش تأملی در هشت حوزه اخلاقی و رفتاری؛ همراه با گزارشی روشن از پاسخ‌های خودتان.</p>
+          <p>۲۴ پرسش تأملی در هشت حوزه اخلاقی و رفتاری؛ همراه با گزارشی روشن از پاسخ‌های خودتان.</p>
         </div>
         <div class="card" onclick="showPage('hekmat')" style="cursor:pointer">
           <div class="ico">📜</div>
@@ -395,8 +264,8 @@ button{cursor:pointer}
         </div>
         <div class="card" onclick="showPage('challenge')" style="cursor:pointer">
           <div class="ico">🎯</div>
-          <h3>چالش خودسازی</h3>
-          <p>گام‌های کوتاه و قابل انجام برای تبدیل دانسته‌ها به رفتارهای روزانه.</p>
+          <h3>چله خودسازی</h3>
+          <p>برنامه ۴۰ روزه برای درمان و تقویت فضیلت‌ها.</p>
         </div>
         <div class="card" onclick="showPage('ailments')" style="cursor:pointer">
           <div class="ico">📚</div>
@@ -413,7 +282,7 @@ button{cursor:pointer}
         <h2>آماده‌ای کمی دقیق‌تر به خودت نگاه کنی؟</h2>
         <p>آزمون آینه جان قرار نیست به تو برچسب بزند؛ قرار است نقطه شروعی برای تأمل باشد.</p>
       </div>
-      <button class="btn" onclick="showPage('test')">شروع آزمون ۴۰ سؤالی ←</button>
+      <button class="btn" onclick="showPage('test')">شروع آزمون ۲۴ سؤالی ←</button>
     </div>
   </section>
 
@@ -428,22 +297,20 @@ button{cursor:pointer}
 <section id="testPage" class="page">
   <div class="wrap">
     <div class="pageTitle">
-      <span class="eyebrow">نسخه طبیب / آینه جان</span>
+      <span class="eyebrow">قدرت آگاهی / آینه جان</span>
       <h1>آزمون خودشناسی اخلاقی</h1>
-      <p>۲۴ پرسش در ۸ حوزه؛ حدود ۸ تا ۱۲ دقیقه.</p>
+      <p>۲۴ پرسش در ۸ حوزه؛ حدود ۴ دقیقه.</p>
     </div>
 
     <div id="introPanel" class="panel">
       <div class="notice"><strong>پیش از شروع:</strong> این پرسش‌نامه ابزار آموزشی و تأمل شخصی است؛ آزمون بالینی یا تشخیص روان‌شناختی نیست. پاسخ درست یا غلط وجود ندارد.</div>
       <h3 style="color:var(--green)">چطور پاسخ بدهم؟</h3>
       <p>به تجربه و رفتار معمول خود در <strong>سه ماه گذشته</strong> فکر کن. پاسخ صادقانه و بدون سرزنش خودت، گزارش را مفیدتر می‌کند.</p>
-      <p class="small">در هر حوزه، سه پرسش درباره دشواری‌ها و دو پرسش درباره توانایی‌های سازنده است. پاسخ پرسش‌های توانمندی معکوس محاسبه می‌شود؛ بنابراین امتیاز بالاتر در همه حوزه‌ها یعنی گزارش بیشترِ دشواری.</p>
-      <div class="cards" style="grid-template-columns:repeat(5,1fr);gap:8px;margin-top:15px">
+      <div class="cards" style="grid-template-columns:repeat(4,1fr);gap:8px;margin-top:15px">
         <div class="card" style="padding:10px;text-align:center"><b>هرگز</b><br><span class="small">۰</span></div>
         <div class="card" style="padding:10px;text-align:center"><b>به‌ندرت</b><br><span class="small">۱</span></div>
         <div class="card" style="padding:10px;text-align:center"><b>گاهی</b><br><span class="small">۲</span></div>
         <div class="card" style="padding:10px;text-align:center"><b>اغلب</b><br><span class="small">۳</span></div>
-        <div class="card" style="padding:10px;text-align:center"><b>تقریباً همیشه</b><br><span class="small">۴</span></div>
       </div>
       <label class="consent"><input id="startConsent" type="checkbox"><span>می‌دانم این آزمون صرفاً برای خودشناسی و آموزش است و نتیجه آن تشخیص یا برچسب روان‌شناختی محسوب نمی‌شود.</span></label>
       <button class="btn" id="beginBtn" disabled onclick="beginTest()">شروع پاسخ‌گویی ←</button>
@@ -565,7 +432,7 @@ button{cursor:pointer}
 <section id="aboutPage" class="page">
   <div class="wrap">
     <div class="pageTitle">
-      <span class="eyebrow">درباره نسخه طبیب</span>
+      <span class="eyebrow">درباره قدرت آگاهی</span>
       <h1>درمان جان با کلام امیرالمؤمنین (ع)</h1>
       <p>طرحی آموزشی برای پیوند خودشناسی، اخلاق و عمل روزانه.</p>
     </div>
@@ -584,15 +451,14 @@ button{cursor:pointer}
     </div>
   </div>
 </section>
-
 </main>
 
 <footer class="footer">
   <div class="wrap">
     <div class="footerGrid">
       <div>
-        <h3>نسخه طبیب</h3>
-        <p>درمان جان با کلام امیرالمؤمنین (ع)</p>
+        <h3>قدرت آگاهی</h3>
+        <p>سفر خودشناسی با نهج‌البلاغه</p>
         <p>شناخت خویشتن، پرورش فضیلت و قدم‌های کوچک برای زندگی آگاهانه‌تر.</p>
       </div>
       <div>
@@ -601,7 +467,7 @@ button{cursor:pointer}
         <a href="#" onclick="showPage('hekmat');return false">نسخه‌های علوی</a>
         <a href="#" onclick="showPage('child');return false">همسفر کوچک</a>
         <a href="#" onclick="showPage('virtues');return false">داروخانه فضیلت‌ها</a>
-        <a href="#" onclick="showPage('challenge');return false">چالش خودسازی</a>
+        <a href="#" onclick="showPage('challenge');return false">چله خودسازی</a>
       </div>
       <div>
         <h3>ارتباط با ما</h3>
@@ -610,11 +476,10 @@ button{cursor:pointer}
         <p class="small" style="margin-top:15px">این وب‌سایت محتوای آموزشی و اخلاقی ارائه می‌کند و جایگزین روان‌شناس یا مشاور واجد صلاحیت نیست.</p>
       </div>
     </div>
-    <div class="copy">© نسخه طبیب | طراحی شده برای شناخت خویشتن و پرورش فضیلت‌ها</div>
+    <div class="copy">© قدرت آگاهی | طراحی شده برای شناخت خویشتن و پرورش فضیلت‌ها</div>
   </div>
 </footer>
 <script>
-  /* ---------- ناوبری ---------- */
 function showPage(name){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   const map = {home:'homePage', test:'testPage', hekmat:'hekmatPage', child:'childPage', virtues:'virtuesPage', challenge:'challengePage', ailments:'ailmentsPage', about:'aboutPage', report:'reportPage'};
@@ -667,173 +532,68 @@ const opts = [["هرگز",0],["به‌ندرت",1],["گاهی",2],["اغلب",3]
 let answers = Array(24).fill(null);
 let current = 0;
 let latestScores = null;
+let currentChallengeData = { type: null, startDate: null, completedDays: [] };
 
 document.addEventListener('DOMContentLoaded', ()=>{ 
   const sc = document.getElementById('startConsent'); 
   if(sc) sc.addEventListener('change', e=>{ document.getElementById('beginBtn').disabled = !e.target.checked; }); 
+  initChallenge();
+  renderDomainCards(); renderHekmat(); renderChild(); renderVirtues(); renderChallenge();
+  try{ const saved = JSON.parse(localStorage.getItem('noskheh_scores') || 'null'); if(saved && saved.length===8){ latestScores = saved; buildReport(); } }catch(e){}
 });
-  function beginTest(){ 
-  document.getElementById('introPanel').classList.add('hidden'); 
-  document.getElementById('quizPanel').classList.remove('hidden'); 
-  renderQuestion(); 
-}
 
+function beginTest(){ document.getElementById('introPanel').classList.add('hidden'); document.getElementById('quizPanel').classList.remove('hidden'); renderQuestion(); }
 function renderQuestion(){ 
   const [q,d] = questions[current]; 
   document.getElementById('domainLabel').textContent = 'حوزه ' + (d+1) + ' از ۸: ' + domains[d].name; 
   document.getElementById('qCount').textContent = 'پرسش ' + (current+1) + ' از ۲۴'; 
   document.getElementById('progress').style.width = ((current+1)/24*100) + '%'; 
   document.getElementById('questionText').textContent = q; 
-  const list = document.getElementById('answerList'); 
-  list.innerHTML = ''; 
-  opts.forEach(([label,val])=>{ 
-    const l = document.createElement('label'); 
-    l.className = 'answer' + (answers[current]===val?' selected':''); 
-    l.innerHTML = `<input type="radio" name="answer" value="${val}" ${answers[current]===val?'checked':''}><span>${label}</span>`; 
-    l.addEventListener('click', ()=>{ answers[current] = val; renderQuestion(); }); 
-    list.appendChild(l); 
-  }); 
-  document.getElementById('prevBtn').disabled = current===0; 
-  document.getElementById('nextBtn').disabled = answers[current]===null; 
-  document.getElementById('nextBtn').textContent = current===23 ? 'مشاهده گزارش ←' : 'بعدی ←'; 
+  const list = document.getElementById('answerList'); list.innerHTML = ''; 
+  opts.forEach(([label,val])=>{ const l = document.createElement('label'); l.className = 'answer' + (answers[current]===val?' selected':''); l.innerHTML = `<input type="radio" name="answer" value="${val}" ${answers[current]===val?'checked':''}><span>${label}</span>`; l.addEventListener('click', ()=>{ answers[current] = val; renderQuestion(); }); list.appendChild(l); }); 
+  document.getElementById('prevBtn').disabled = current===0; document.getElementById('nextBtn').disabled = answers[current]===null; document.getElementById('nextBtn').textContent = current===23 ? 'مشاهده گزارش ←' : 'بعدی ←'; 
 }
-
-function moveQuestion(dir){ 
-  if(dir===1 && answers[current]===null) return; 
-  if(current===23 && dir===1){ calculateResults(); return; } 
-  current = Math.max(0, Math.min(23, current+dir)); 
-  renderQuestion(); 
-}
-
-function level(score){ 
-  if(score<25) return ['کمتر گزارش‌شده','در پاسخ‌های این نوبت، دشواری‌های این حوزه کمتر گزارش شده‌اند؛ این نتیجه به معنی نبود کامل چالش نیست.']; 
-  if(score<50) return ['گاه‌به‌گاه گزارش‌شده','برخی موقعیت‌ها ممکن است در این حوزه برای شما چالش‌برانگیز باشند.']; 
-  if(score<75) return ['بیشتر گزارش‌شده','پاسخ‌ها نشان می‌دهند این حوزه می‌تواند موضوع مناسبی برای توجه و تمرین آگاهانه باشد.']; 
-  return ['بسیار پرتکرار در پاسخ‌ها','در این نوبت، دشواری‌های این حوزه بیشتر گزارش شده‌اند؛ بهتر است آن را با کنجکاوی و بدون سرزنش بررسی کنید.']; 
-}
-
+function moveQuestion(dir){ if(dir===1 && answers[current]===null) return; if(current===23 && dir===1){ calculateResults(); return; } current = Math.max(0, Math.min(23, current+dir)); renderQuestion(); }
+function level(score){ if(score<25) return ['کمتر گزارش‌شده','در پاسخ‌های این نوبت، دشواری‌های این حوزه کمتر گزارش شده‌اند؛ این نتیجه به معنی نبود کامل چالش نیست.']; if(score<50) return ['گاه‌به‌گاه گزارش‌شده','برخی موقعیت‌ها ممکن است در این حوزه برای شما چالش‌برانگیز باشند.']; if(score<75) return ['بیشتر گزارش‌شده','پاسخ‌ها نشان می‌دهند این حوزه می‌تواند موضوع مناسبی برای توجه و تمرین آگاهانه باشد.']; return ['بسیار پرتکرار در پاسخ‌ها','در این نوبت، دشواری‌های این حوزه بیشتر گزارش شده‌اند؛ بهتر است آن را با کنجکاوی و بدون سرزنش بررسی کنید.']; }
 function calculateResults(){ 
-  const scores = domains.map((_,d)=>{ 
-    const idx = questions.map((q,i)=>q[1]===d?i:null).filter(i=>i!==null); 
-    const vals = idx.map(i=> questions[i][2] ? (3-answers[i]) : answers[i]); 
-    return Math.round(vals.reduce((a,b)=>a+b,0)/(vals.length*3)*100); 
-  }); 
-  latestScores = scores;
-  // ذخیره نوع چله بر اساس بالاترین نمره
-const maxScore = Math.max(...scores);
-const maxIndex = scores.indexOf(maxScore);
-currentChallengeData.type = domains[maxIndex].name;
-currentChallengeData.completedDays = []; // ریست کردن روزهای قبلی
-currentChallengeData.startDate = new Date().toISOString();
-localStorage.setItem('noskheh_challenge_data', JSON.stringify(currentChallengeData));
+  const scores = domains.map((_,d)=>{ const idx = questions.map((q,i)=>q[1]===d?i:null).filter(i=>i!==null); const vals = idx.map(i=> questions[i][2] ? (3-answers[i]) : answers[i]); return Math.round(vals.reduce((a,b)=>a+b,0)/(vals.length*3)*100); }); 
+  latestScores = scores; 
+  const maxScore = Math.max(...scores); const maxIndex = scores.indexOf(maxScore); currentChallengeData.type = domains[maxIndex].name; currentChallengeData.completedDays = []; currentChallengeData.startDate = new Date().toISOString(); localStorage.setItem('noskheh_challenge_data', JSON.stringify(currentChallengeData));
   try{ localStorage.setItem('noskheh_scores', JSON.stringify(scores)); localStorage.setItem('noskheh_scores_date', new Date().toISOString()); }catch(e){} 
-  document.getElementById('quizPanel').classList.add('hidden'); 
-  document.getElementById('reportPageInline').classList.remove('hidden'); 
-  buildReport(); 
-  showPage('report'); 
+  document.getElementById('quizPanel').classList.add('hidden'); document.getElementById('reportPageInline').classList.remove('hidden'); buildReport(); showPage('report'); 
 }
-
 function buildReport(){ 
   if(!latestScores) return; 
-  const sorted = domains.map((d,i)=>({d,i,s:latestScores[i]})).sort((a,b)=>b.s-a.s); 
-  const date = new Date().toLocaleDateString('fa-IR'); 
+  const sorted = domains.map((d,i)=>({d,i,s:latestScores[i]})).sort((a,b)=>b.s-a.s); const date = new Date().toLocaleDateString('fa-IR'); 
   let out = `<div class="reportIntro"><span class="pill">گزارش شخصی آینه جان</span><h2>این گزارش، آغازی برای تأمل است؛ نه حکمی درباره شخصیت تو.</h2><p>تاریخ تهیه: ${date}</p><p>در هر حوزه، امتیاز بالاتر یعنی دشواری‌های آن حوزه بیشتر گزارش شده‌اند. امتیازها فقط خلاصه پاسخ‌های خوداظهاری شما هستند؛ نه تشخیص، نه قضاوت اخلاقی و نه مقایسه با دیگران.</p></div>`; 
-  
   out += '<h3 style="color:var(--green)">نمای کلی هشت حوزه</h3><div class="resultGrid">'; 
-  sorted.forEach(x=>{ 
-    const [lv] = level(x.s); 
-    out += `<div class="scoreCard"><div class="scoreHead"><span>${x.d.name}</span><span>${x.s} از ۱۰۰</span></div><div class="bar"><span style="width:${x.s}%"></span></div><div class="level">${lv}</div></div>`; 
-  }); 
-  
+  sorted.forEach(x=>{ const [lv] = level(x.s); out += `<div class="scoreCard"><div class="scoreHead"><span>${x.d.name}</span><span>${x.s} از ۱۰۰</span></div><div class="bar"><span style="width:${x.s}%"></span></div><div class="level">${lv}</div></div>`; }); 
   out += '</div><h3 style="color:var(--green)">پیشنهادهای رشد (سه حوزه پررنگ‌تر)</h3>'; 
-  sorted.slice(0,3).forEach(x=>{ 
-    const [lv] = level(x.s); 
-    out += `<div class="domainReport"><h3>${x.d.name} — ${lv}</h3><p>${x.d.desc}</p><div class="notice" style="margin:10px 0;"><p><strong>کلام امیرالمؤمنین (ع):</strong> ${x.d.hadith}</p><p><strong style="color:var(--gold)">${x.d.solution}</strong></p><p class="small">منبع: ${x.d.ref}</p></div></div>`; 
-  }); 
-  
+  sorted.slice(0,3).forEach(x=>{ const [lv] = level(x.s); out += `<div class="domainReport"><h3>${x.d.name} — ${lv}</h3><p>${x.d.desc}</p><div class="notice" style="margin:10px 0;"><p><strong>کلام امیرالمؤمنین (ع):</strong> ${x.d.hadith}</p><p><strong style="color:var(--gold)">${x.d.solution}</strong></p><p class="small">منبع: ${x.d.ref}</p></div></div>`; }); 
+  out += `<div style="margin-top: 20px; padding: 20px; background: #fff7e4; border-radius: 15px; border: 1px solid var(--gold); text-align: center;"><p style="color: var(--green); font-weight: bold; margin-bottom: 10px;">بر اساس نمره‌های شما، پیشنهاد می‌شه برنامه ۴۰ روزه خودسازی رو شروع کنید.</p><button class="btn gold" onclick="renderChallenge(); showPage('challenge');">مشاهده چله خودسازی ←</button></div>`;
   out += `<div class="notice" style="margin-top:20px"><strong>یادآوری:</strong> این پرسش‌نامه نسخه اولیه تأملی است و هنوز روایی و پایایی آن در پژوهش مستقل بررسی نشده است. برای بررسی مشکلات روان‌شناختی، با متخصص واجد صلاحیت گفت‌وگو کنید.</div>`; 
   out += `<div class="resultActions"><button class="btn" onclick="window.print()">چاپ / ذخیره PDF</button><button class="btn outline" onclick="copyReport()">کپی گزارش</button><button class="btn outline" onclick="resetTest()">شروع دوباره آزمون</button><button class="btn outline" onclick="showPage('home')">بازگشت به خانه</button></div>`; 
-  // اضافه کردن دکمه رفتن به چله خودسازی
-out += `
-  <div style="margin-top: 20px; padding: 20px; background: #fff7e4; border-radius: 15px; border: 1px solid var(--gold); text-align: center;">
-    <p style="color: var(--green); font-weight: bold; margin-bottom: 10px;">بر اساس نمره‌های شما، پیشنهاد می‌شه برنامه ۴۰ روزه خودسازی رو شروع کنید.</p>
-    <button class="btn gold" onclick="showPage('challenge')">مشاهده چله خودسازی ←</button>
-  </div>
-`;
   document.getElementById('reportContent').innerHTML = out; 
 }
+function copyReport(){ if(!latestScores) return; const sorted = domains.map((d,i)=>({d,i,s:latestScores[i]})).sort((a,b)=>b.s-a.s); let t = 'گزارش شخصی آینه جان | قدرت آگاهی\nاین گزارش آموزشی و تأملی است و تشخیص روان‌شناختی نیست.\n\n'; sorted.forEach(x=>{ t += `${x.d.name}: ${x.s} از ۱۰۰ — ${level(x.s)[0]}\n${x.d.desc}\nکلام امیرالمؤمنین: ${x.d.hadith}\n${x.d.solution} (${x.d.ref})\n\n`; }); t += 'توضیح: این پرسش‌نامه نسخه اولیه است؛ روایی، پایایی و مرزهای امتیاز آن هنوز در مطالعه مستقل روان‌سنجی بررسی نشده‌اند.'; if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(()=>alert('گزارش کپی شد ✓')).catch(()=>alert('کپی ممکن نشد. از دکمه چاپ استفاده کنید.')); } else { alert('کپی خودکار در این مرورگر در دسترس نیست. از دکمه چاپ / ذخیره PDF استفاده کنید.'); } }
+function resetTest(){ answers = Array(24).fill(null); current = 0; const intro = document.getElementById('introPanel'); const quiz = document.getElementById('quizPanel'); const rep = document.getElementById('reportPageInline'); if(intro) intro.classList.remove('hidden'); if(quiz) quiz.classList.add('hidden'); if(rep) rep.classList.add('hidden'); const sc = document.getElementById('startConsent'); if(sc) sc.checked = false; const bb = document.getElementById('beginBtn'); if(bb) bb.disabled = true; }
 
-function copyReport(){ 
-  if(!latestScores) return; 
-  const sorted = domains.map((d,i)=>({d,i,s:latestScores[i]})).sort((a,b)=>b.s-a.s); 
-  let t = 'گزارش شخصی آینه جان | نسخه طبیب\nاین گزارش آموزشی و تأملی است و تشخیص روان‌شناختی نیست.\n\n'; 
-  sorted.forEach(x=>{ 
-    t += `${x.d.name}: ${x.s} از ۱۰۰ — ${level(x.s)[0]}\n${x.d.desc}\nکلام امیرالمؤمنین: ${x.d.hadith}\n${x.d.solution} (${x.d.ref})\n\n`; 
-  }); 
-  t += 'توضیح: این پرسش‌نامه نسخه اولیه است؛ روایی، پایایی و مرزهای امتیاز آن هنوز در مطالعه مستقل روان‌سنجی بررسی نشده‌اند.'; 
-  if(navigator.clipboard && navigator.clipboard.writeText){ 
-    navigator.clipboard.writeText(t).then(()=>alert('گزارش کپی شد ✓')).catch(()=>alert('کپی ممکن نشد. از دکمه چاپ استفاده کنید.')); 
-  } else { 
-    alert('کپی خودکار در این مرورگر در دسترس نیست. از دکمه چاپ / ذخیره PDF استفاده کنید.'); 
-  } 
-}
-
-function resetTest(){ 
-  answers = Array(24).fill(null); 
-  current = 0; 
-  const intro = document.getElementById('introPanel'); 
-  const quiz = document.getElementById('quizPanel'); 
-  const rep = document.getElementById('reportPageInline'); 
-  if(intro) intro.classList.remove('hidden'); 
-  if(quiz) quiz.classList.add('hidden'); 
-  if(rep) rep.classList.add('hidden'); 
-  const sc = document.getElementById('startConsent'); 
-  if(sc) sc.checked = false; 
-  const bb = document.getElementById('beginBtn'); 
-  if(bb) bb.disabled = true; 
-}
-  const domainIcons = ['🌿','🌼','🪶','🕊️','🍃','🧭','🤝','⏳'];
+const domainIcons = ['🌿','🌼','🪶','🕊️','🍃','🧭','🤝','⏳'];
 function renderDomainCards(){ const el = document.getElementById('domainCards'); if(!el) return; el.innerHTML = domains.map((d,i)=>`<div class="card"><div class="ico">${domainIcons[i]}</div><h3>${d.name}</h3><p>${d.desc}</p><p style="margin-top:12px"><strong style="color:var(--green)">تمرین:</strong> ${d.solution}</p></div>`).join(''); }
-
 const hekmats = [
   {number: 134, arabic: "لَا يَكُونُ الصَّدِيقُ صَدِيقاً حَتَّى يَحْفَظَ أَخَاهُ فِي ثَلَاثٍ: فِي نَكْبَتِهِ وَ غَيْبَتِهِ وَ وَفَاتِهِ.", translation: "دوست، دوست واقعی نیست مگر آنکه بر برادر (رفیق) خود در سه حالت وفادار باشد: در سختی و مصیبت، در غیاب او، و در هنگام مرگ او.", words: [{ar:"نَکْبَة",fa:"سختی، مصیبت و گرفتاری"},{ar:"غَيْبَة",fa:"غیاب، نبودن و زمانی که فرد حضور ندارد"}], reflect: ["آزمونِ مصیبت (نکبت): دوستی واقعی در روزهای خوش و رفاه نیست؛ بلکه کسی است که در روزهای تیره و تار و در برابر سختی‌ها، مانند تکیه‌گاهی محکم در کنار تو باشد.","آزمونِ غیاب (غیبت): سخت‌ترین آزمون، زمانی است که تو حضور نداری. آیا رفیق تو در غیاب تو، از نام و اعتبار و حقوق تو دفاع می‌کند؟","آزمونِ وفاداریِ پایانی (وفات): وفاداری به دوست، تنها تا زمانی که او زنده است نیست؛ بلکه رعایت حرمت او و یادکرد نیک او حتی پس از مرگ، نشانه‌ی اصالتِ دوستی است."], ask: "دوستان ما در چه زمانی کیفیتِ واقعیِ خود را نشان می‌دهند؟ ۱. در روزهای خوش ۲. در حضورِ مداوم ۳. در روزهای سختی، غیبت و حتی پس از مرگ ۴. تنها در زمان‌هایی که منافع مشترکی وجود دارد"},
   {number: 135, arabic: "مَنْ أُعْطِيَ أَرْبَعاً لَمْ يُحْرَمْ أَرْبَعاً؛ مَنْ أُعْطِيَ الدُّعَاءَ لَمْ يُحْرَمِ الْإِجَابَةَ، وَ مَنْ أُعْطِيَ التَّوْبَةَ لَمْ يُحْرَمِ الْقَبُولَ، وَ مَنْ أُعْطِيَ الِاسْتِغْفَارَ لَمْ يُحْرَمِ الْمَغْفِرَةَ، وَ مَنْ أُعْطِيَ الشُّكْرَ لَمْ يُحْرَمِ الزِّيَادَةَ.", translation: "هر کس چهار چیز به او داده شود، از چهار چیز محروم نخواهد شد: هر کس به او توانِ دعا داده شود، از اجابت محروم نمی‌شود؛ و هر کس توانِ توبه داده شود، از پذیرفته شدن محروم نمی‌شود؛ و هر کس توانِ استغفار داده شود، از آمرزش محروم نمی‌شود؛ و هر کس توانِ شکرگزاری داده شود، از نعمتِ افزون محروم نمی‌شود.", words: [{ar:"دُعَاء",fa:"دعا کردن و درخواست از پروردگار"},{ar:"تَوْبَة",fa:"بازگشت از مسیر اشتباه"},{ar:"اِسْتِغْفَار",fa:"طلب بخشش مداوم"},{ar:"شُكْر",fa:"شکرگزاری برای داشته‌های فعلی"}], reflect: ["توانایی، خود یک نعمت است: اینکه انسان بتواند دعا، توبه یا شکر کند، نشانه‌ی این است که خداوند درهای رحمت را به روی او باز کرده است.","پیوندِ عمل و نتیجه: در این حکمت، میانِ هر عمل و نتیجه‌ای الهی، پیوندی ناگسستنی برقرار شده است.","رهایی از محرومیت: کسی که این چهار کلید را در دست داشته باشد، هرگز از نعمت‌های اصلی زندگی محروم نخواهد ماند."], ask: "کدام‌یک در زندگی شما گم شده؟ ۱. دعا کردن ۲. توبه ۳. استغفار ۴. شکرگزاری"},
   {number: 148, arabic: "الْمَرْءُ مَخْبُوءٌ تَحْتَ لِسَانِهِ.", translation: "شخصیت و حقیقت هر انسان زیر زبان او پنهان است. یعنی از حرف‌های هرکس می‌توانیم به بخشی از فکر، اخلاق و شخصیت او پی ببریم.", words: [{ar:"اَلْمَرْء",fa:"انسان، شخص"},{ar:"مَخْبُوء",fa:"پنهان شده"},{ar:"لِسَان",fa:"زبان"}], reflect: ["زبان، آینه‌ی درون است: آنچه در دل داریم، در گفتار ما نمایان می‌شود.","سکوت حکیمانه: گاهی سکوت، بیش از سخن، شخصیت انسان را نشان می‌دهد.","انتخاب واژه‌ها: واژه‌هایی که انتخاب می‌کنیم، اخلاق و نگاه ما به دیگران را آشکار می‌کنند."], ask: "اگر زبانت یک آینه بود، امروز چه چیزی را در آن می‌دیدی؟ آیا از آنچه می‌گویی راضی هستی؟"},
   {number: 82, arabic: "أَحْبِبْ حَبِيبَكَ هَوْناً مَا عَسَى أَنْ يَكُونَ بَغِيضَكَ يَوْماً مَا، وَ أَبْغِضْ بَغِيضَكَ هَوْناً مَا عَسَى أَنْ يَكُونَ حَبِيبَكَ يَوْماً مَا.", translation: "دوستت را به اندازه‌ای دوست بدار که ممکن است روزی دشمنت شود؛ و دشمنت را به اندازه‌ای دشمن بدار که ممکن است روزی دوستت شود.", words: [{ar:"هَوْناً",fa:"به اندازه، به اعتدال"}], reflect: ["اعتدال در احساسات: امام (ع) به ما می‌آموزد که در دوستی و دشمنی، از افراط بپرهیزیم.","تغییرپذیری روابط: انسان‌ها و روابط تغییر می‌کنند؛ پس نباید وابستگی افراطی یا کینه‌ی عمیق داشته باشیم.","مرزبندی سالم: این حکمت به معنای بی‌وفایی نیست؛ بلکه به معنای حفظ تعادل و آمادگی برای تحول است."], ask: "آیا در روابط خود، اعتدال را رعایت می‌کنم یا دچار افراط می‌شوم؟"},
-  {number: 38, arabic: "يَا بُنَيَّ احْفَظْ عَنِّي أَرْبَعاً وَ أَرْبَعاً، لَا يَضُرُّكَ مَا عَمِلْتَ مَعَهُنَّ: إِنَّ أَغْنَى الْغِنَى الْعَقْلُ، وَ أَكْبَرَ الْفَقْرِ الْحُمْقُ، وَ أَوْحَشَ الْوَحْشَةِ الْعُجْبُ، وَ أَكْرَمَ الْكَرَمِ الْحُسْنُ الْخُلُقِ.", translation: "ای فرزندم! از من چهار چیز و چهار چیز را به خاطر بسپار که هرگز با داشتن آن‌ها به تو زیانی نمی‌رسد: همانا بی‌نیازترین بی‌نیازی، عقل است؛ و بزرگ‌ترین فقر، حماقت است؛ و وحشتناک‌ترین تنهایی، خودپسندی است؛ و باارزش‌ترین بزرگی، اخلاق نیکوست.", words: [{ar:"الْعَقْل",fa:"خرد، عقل"},{ar:"الْحُمْق",fa:"نادانی، حماقت"},{ar:"الْعُجْب",fa:"خودپسندی، غرور"},{ar:"الْخُلُق",fa:"اخلاق، خوی"}], reflect: ["ثروت واقعی: عقل، بزرگ‌ترین سرمایه است که هیچ‌کس نمی‌تواند آن را از تو بگیرد.","فقر واقعی: نداشتن مال، فقر نیست؛ نادانی، فقر واقعی است.","تنهایی واقعی: خودپسندی، انسان را از دیگران دور می‌کند و باعث تنهایی می‌شود.","بزرگی واقعی: اخلاق نیکو، انسان را بزرگ می‌کند، نه ثروت و جایگاه."], ask: "کدام‌یک از این چهار گنج را در خودم بیشتر دارم و کدام را باید تقویت کنم؟"},
-  ,
-{
-  number: 143,
-  arabic: "الْهَمُّ نِصْفُ الْهَرَمِ.",
-  translation: "اندوه و نگرانی، نیمی از پیری است.",
-  words: [
-    {ar:"الْهَمّ", fa:"اندوه، نگرانی، دغدغه‌ی ذهنی و استرس"},
-    {ar:"الْهَرَم", fa:"پیری، فرسودگی و دوران کهولت"}
-  ],
-  reflect: [
-    "تحلیل روان‌شناختی: این سخن به اثرات مخربِ «استرس مزمن» و «نگرانی‌های مداوم» بر سلامت انسان اشاره دارد. نگرانی‌های ذهنی، فرآیند فرسودگیِ جسمی و روانی را تسریع می‌کنند.",
-    "اهمیتِ آرامش ذهنی: برای حفظ جوانی و شادابی، تنها ورزش و تغذیه کافی نیست؛ بلکه رهایی از زنجیرِ «هَمّ» (نگرانی‌های بیهوده) برای حفظ سلامت، ضرورتی حیاتی است."
-  ],
-  ask: "آیا دغدغه‌های ذهنی و نگرانی‌های ما، بیش از آنکه بر واقعیتِ زندگی اثر بگذارند، بر سلامت و شادابیِ خودمان اثر گذاشته‌اند؟"
-}
+  {number: 38, arabic: "يَا بُنَيَّ احْفَظْ عَنِّي أَرْبَعاً وَ أَرْبَعاً، لَا يَضُرُّكَ مَا عَمِلْتَ مَعَهُنَّ: إِنَّ أَغْنَى الْغِنَى الْعَقْلُ، وَ أَكْبَرَ الْفَقْرِ الْحُمْقُ، وَ أَوْحَشَ الْوَحْشَةِ الْعُجْبُ، وَ أَكْرَمَ الْكَرَمِ الْحُسْنُ الْخُلُقِ.", translation: "ای فرزندم! از من چهار چیز و چهار چیز را به خاطر بسپار که هرگز با داشتن آن‌ها به تو زیانی نمی‌رسد: همانا بی‌نیازترین بی‌نیازی، عقل است؛ و بزرگ‌ترین فقر، حماقت است؛ و وحشتناک‌ترین تنهایی، خودپسندی است؛ و باارزش‌ترین بزرگی، اخلاق نیکوست.", words: [{ar:"الْعَقْل",fa:"خرد، عقل"},{ar:"الْحُمْق",fa:"نادانی، حماقت"},{ar:"الْعُجْب",fa:"خودپسندی، غرور"},{ar:"الْخُلُق",fa:"اخلاق، خوی"}], reflect: ["ثروت واقعی: عقل، بزرگ‌ترین سرمایه است که هیچ‌کس نمی‌تواند آن را از تو بگیرد.","فقر واقعی: نداشتن مال، فقر نیست؛ نادانی، فقر واقعی است.","تنهایی واقعی: خودپسندی، انسان را از دیگران دور می‌کند و باعث تنهایی می‌شود.","بزرگی واقعی: اخلاق نیکو، انسان را بزرگ می‌کند، نه ثروت و جایگاه."], ask: "کدام‌یک از این چهار گنج را در خودم بیشتر دارم و کدام را باید تقویت کنم؟"}
 ];
-
 function renderHekmat(){ const el = document.getElementById('hekmatList'); if(!el) return; el.innerHTML = hekmats.map(h=>`<div class="hekmatCard"><span class="num">حکمت ${h.number} نهج‌البلاغه</span><div class="arabic">${h.arabic}</div><div class="trans"><strong>ترجمه:</strong> ${h.translation}</div><div class="words"><h4>🔑 لغات کلیدی:</h4>${h.words.map(w=>`<p><strong>${w.ar}:</strong> ${w.fa}</p>`).join('')}</div><div class="reflect"><h4>🔍 لحظه‌ای تأمل:</h4><ol>${h.reflect.map(r=>`<li>${r}</li>`).join('')}</ol></div><div class="ask"><h4>❓ از خودمان بپرسیم:</h4><p>${h.ask}</p></div><div class="source">منبع: نهج‌البلاغه، حکمت ${h.number} | کانال همسفر کلام علی</div></div>`).join(''); }
 
 const stories = [
   {title: "🎒 صندوقچه‌ای که قفل نمی‌شد!", intro: "حکمت ۱۴۸ نهج‌البلاغه", story: "در مدرسه، مسابقه‌ای برگزار شده بود. معلم یک صندوقچه زیبا آورده بود و گفت: «داخل این صندوقچه یک هدیه برای کسی است که بتواند راز آن را پیدا کند!»\nبچه‌ها با هیجان دور صندوقچه جمع شدند. سعید گفت: «من از همه باهوش‌ترم! حتماً من می‌تونم قفلش رو باز کنم!» اما هرچه تلاش کرد، موفق نشد.\nبعد نوبت به علی رسید. او به دوستانش گفت: «بیایید با هم فکر کنیم. شاید بتوانیم راهی پیدا کنیم.»\nیکی از بچه‌ها گفت: «شاید باید کلیدش رو پیدا کنیم!» علی با مهربانی جواب داد: «فکر خوبیه! بیا با هم دنبالش بگردیم.»\nآن‌ها با همکاری یکدیگر کلید را پیدا کردند و صندوقچه باز شد.\nمعلم لبخند زد و گفت: «بچه‌ها! امروز فقط صندوقچه باز نشد؛ ما چیز مهم‌تری هم فهمیدیم. از حرف‌های هرکدام شما فهمیدیم چطور فکر می‌کنید و چه اخلاقی دارید. یکی با خودخواهی حرف زد و دیگری با همکاری و احترام.»\nسعید سرش را پایین انداخت و گفت: «حالا فهمیدم بهتره به‌جای اینکه فقط از خودم تعریف کنم، با حرف‌ها و رفتارم خوبی‌هام رو نشون بدم.»", arabic: "الْمَرْءُ مَخْبُوءٌ تَحْتَ لِسَانِهِ.", faTranslation: "شخصیت و حقیقت هر انسان زیر زبان او پنهان است.", challenge: "اگر زبانت یک آینه بود... فرض کن کسی تو را نمی‌شناسد و فقط یک جمله از تو می‌شنود. چه جمله‌ای می‌گویی تا او بفهمد چه ویژگی زیبایی در وجودت داری؟"},
   {title: "🌳 درختی که با همکاری رشد کرد", intro: "داستانی درباره همدلی و همکاری", story: "در یک روستای سرسبز، بچه‌ها تصمیم گرفتند در حیاط مدرسه درخت بکارند. هر کدام یک نهال کوچک آورد.\nاما مشکل این بود که زمین سخت بود و کاشتن نهال‌ها کار سختی به نظر می‌رسید. یکی از بچه‌ها گفت: «من نمی‌تونم، خیلی سخته!» و نهالش را کنار گذاشت.\nدختری به نام زهرا گفت: «بیایید با هم این کار رو انجام بدیم. من بیل می‌آرم، شما آب بیارید، و با هم چاله‌ها رو حفر کنیم.»\nبچه‌ها قبول کردند. هر کس کاری را به عهده گرفت: یکی چاله می‌کند، یکی آب می‌آورد، یکی نهال را نگه می‌داشت.\nوقتی کار تمام شد، همه خسته اما خوشحال بودند. معلم گفت: «امروز یاد گرفتیم که با همکاری، کارهای سخت آسان می‌شود. هیچ‌کس تنها نیست.»\nسال بعد، آن نهال‌ها درخت‌های زیبایی شده بودند که سایه‌شان به همه می‌رسید.", arabic: "وَ تَعَاوَنُوا عَلَى الْبِرِّ وَ التَّقْوَى.", faTranslation: "و در نیکی و پرهیزگاری با یکدیگر همکاری کنید. (قرآن کریم، مائده: ۲)", challenge: "این هفته یک کار خوب را با یکی از دوستان یا اعضای خانواده‌ات با همکاری انجام بده. بعد بنویس چه احساسی داشتی."},
-  {title: "🌙 چراغی که در تاریکی روشن ماند", intro: "داستانی درباره گذشت و مهربانی", story: "در یک شب تاریک، مردی در کوچه‌ای گم شده بود. پیرمردی که آنجا زندگی می‌کرد، چراغی برداشت و به او کمک کرد راهش را پیدا کند.\nمرد گفت: «شما که مرا نمی‌شناسید، چرا این‌قدر به من مهربانی می‌کنید؟»\nپیرمرد لبخند زد و گفت: «من سال‌ها پیش از این کوچه رد می‌شدم و کسی به من کمک کرد. آن روز فهمیدم که مهربانی، چراغی است که از دستی به دست دیگر می‌رسد.»\nمرد جوان تحت تأثیر قرار گرفت و تصمیم گرفت او هم به دیگران کمک کند. سال‌ها بعد، همان مرد جوان، چراغی شد برای کسانی که در تاریکی بودند.\nمهربانی مثل چراغ است؛ هر چه بیشتر ببخشی، بیشتر روشن می‌شود.", arabic: "الْكَريمُ مَنْ يَبْتَدِئُ بِالْإِحْسانِ.", faTranslation: "بخشنده کسی است که خود آغازگر نیکی باشد.", challenge: "امروز یک کار کوچک مهربانانه برای کسی انجام بده که انتظارش را ندارد. بعد به این فکر کن که آن کار چه تأثیری روی او گذاشت."},
-  {
-  title: "🤝 رازِ دوستیِ پیامبر (ص) و پیرزن",
-  intro: "حکمت ۱۴۲ نهج‌البلاغه",
-  story: "در زمان قدیم، پیرزنی در شهر مکه زندگی می‌کرد که از پیامبر اکرم (ص) خوشش نمی‌آمد. هر وقت پیامبر (ص) از آن کوچه رد می‌شد، پیرزن روی ایشان خاکستر می‌ریخت و حرف‌های بد می‌زد.\n\nیک روز پیامبر (ص) متوجه شدند که چند روزی است پیرزن از خانه بیرون نیامده و خبری از او نیست. پرسیدند و فهمیدند که مریض شده است. پیامبر (ص) به عیادت او رفتند. پیرزن با تعجب گفت: «چرا به دیدن من آمدی؟ من که همیشه به تو بدی می‌کردم!»\n\nپیامبر (ص) لبخند زدند و فرمودند: «آیا وقت آن نرسیده که تو با من مهربان باشی؟» پیرزن از این همه محبت و مهربانی شرمنده شد و فهمید که دین پیامبر، دینِ مهربانی و دلجویی است.\n\nآن روز، پیرزن مسلمان شد و فهمید که بهترین راه برای رسیدن به دیگران، زبانِ مهربانی و دلجویی است.",
-  arabic: "التَّوَدُّدُ نِصْفُ الْعَقْلِ.",
-  faTranslation: "دوستی کردن و ابرازِ محبت، نیمی از عقل است.",
-  challenge: "این هفته به یک نفر که مدتی از او خبر نداری یا از او دلخوری، زنگ بزن یا یک هدیه کوچک بده. ببین چه حسی بهت دست می‌دهد!"
-  }
+  {title: "🌙 چراغی که در تاریکی روشن ماند", intro: "داستانی درباره گذشت و مهربانی", story: "در یک شب تاریک، مردی در کوچه‌ای گم شده بود. پیرمردی که آنجا زندگی می‌کرد، چراغی برداشت و به او کمک کرد راهش را پیدا کند.\nمرد گفت: «شما که مرا نمی‌شناسید، چرا این‌قدر به من مهربانی می‌کنید؟»\nپیرمرد لبخند زد و گفت: «من سال‌ها پیش از این کوچه رد می‌شدم و کسی به من کمک کرد. آن روز فهمیدم که مهربانی، چراغی است که از دستی به دست دیگر می‌رسد.»\nمرد جوان تحت تأثیر قرار گرفت و تصمیم گرفت او هم به دیگران کمک کند. سال‌ها بعد، همان مرد جوان، چراغی شد برای کسانی که در تاریکی بودند.\nمهربانی مثل چراغ است؛ هر چه بیشتر ببخشی، بیشتر روشن می‌شود.", arabic: "الْكَريمُ مَنْ يَبْتَدِئُ بِالْإِحْسانِ.", faTranslation: "بخشنده کسی است که خود آغازگر نیکی باشد.", challenge: "امروز یک کار کوچک مهربانانه برای کسی انجام بده که انتظارش را ندارد. بعد به این فکر کن که آن کار چه تأثیری روی او گذاشت."}
 ];
-
 function renderChild(){ const el = document.getElementById('childList'); if(!el) return; el.innerHTML = stories.map(s=>`<div class="storyCard"><h3>${s.title}</h3><p class="small">${s.intro}</p><div class="story">${s.story.replace(/\n/g,'<br>')}</div><div class="kalame"><h4 style="margin:0 0 8px;color:var(--green)">📖 کلام امام علی (ع):</h4><div class="ar">${s.arabic}</div><div class="fa"><strong>ترجمه:</strong> ${s.faTranslation}</div></div><div class="challenge"><h4>🎯 چالش این هفته:</h4><p>${s.challenge}</p></div></div>`).join(''); }
 
 const virtues = [
@@ -846,14 +606,8 @@ const virtues = [
   {name: "خودخواهی و همدلی", icon: "🤝", desc: "دیدن دیگران از دریچهٔ دل.", habit: "امام علی (ع): «أَوَ أَبِيتُ مِبْطَانًا...» آیا با شکمی سیر بخوابم و اطرافم گرسنه باشند؟ راهکار: خودت را جای طرف مقابل بگذار.", checklist: ["امروز به یک نفر کمک کردم","به کسی که ناراحت بود توجه کردم","قبل از قضاوت، از زاویه دید او نگاه کردم"]},
   {name: "صبر و خویشتن‌داری", icon: "⏳", desc: "قدرتی فراتر از واکنش نشان دادن.", habit: "امام علی (ع): «الصَّبْرُ صَبْرَانِ» صبر دو گونه است. راهکار: پیش از واکنش، لحظه‌ای درنگ کن و از خودت بپرس آیا این بهترین انتخاب است؟", checklist: ["امروز قبل از پاسخ تند، مکث کردم","یک خواسته فوری را به تعویق انداختم","به جای واکنش، آگاهانه انتخاب کردم"]}
 ];
-
 function renderVirtues(){ const el = document.getElementById('virtueList'); if(!el) return; el.innerHTML = virtues.map((v,i)=>{ const saved = JSON.parse(localStorage.getItem('noskheh_virtue_'+i) || '{}'); return `<div class="virtueCard"><h3>${v.icon} ${v.name}</h3><p class="desc">${v.desc}</p><div class="habit"><strong>تمرین روزانه:</strong> ${v.habit}</div><div class="small" style="margin-top:10px">چک‌لیست امروز:</div><ul class="checkList">${v.checklist.map((c,j)=>`<li><input type="checkbox" id="v${i}c${j}" ${saved[j]?'checked':''} onchange="toggleVirtue(${i},${j},this.checked)"><label for="v${i}c${j}">${c}</label></li>`).join('')}</ul></div>`; }).join(''); }
-
 function toggleVirtue(vi,ci,checked){ const key = 'noskheh_virtue_'+vi; const saved = JSON.parse(localStorage.getItem(key) || '{}'); saved[ci] = checked; localStorage.setItem(key, JSON.stringify(saved)); }
-
-/* ========================================================
-   منطق چله ۴۰ روزه (چله خودسازی)
-   ======================================================== */
 
 const challengeTasks = {
   "خشم و تنظیم هیجان": [
@@ -870,79 +624,11 @@ const challengeTasks = {
   ]
 };
 
-let currentChallengeData = {
-  type: null,
-  startDate: null,
-  completedDays: []
-};
-
 function initChallenge() {
   const saved = localStorage.getItem('noskheh_challenge_data');
-  if (saved) {
-    currentChallengeData = JSON.parse(saved);
-  }
+  if (saved) { currentChallengeData = JSON.parse(saved); }
 }
 
-function renderChallenge() {
-  const intro = document.getElementById('challengeIntro');
-  const active = document.getElementById('challengeActive');
-  
-  // اگر کاربر هیچ چله‌ای فعال نداره، صفحه معرفی (اول آزمون بده) رو نشون بده
-  if (!currentChallengeData.type) {
-    if(intro) intro.classList.remove('hidden');
-    if(active) active.classList.add('hidden');
-    return;
-  }
-
-  // اگر چله فعال داره، صفحه جدول رو نشون بده
-  if(intro) intro.classList.add('hidden');
-  if(active) active.classList.remove('hidden');
-
-  document.getElementById('challengeTitle').textContent = 'چله درمان ' + currentChallengeData.type;
-  
-  // انتخاب لیست تمرین‌ها بر اساس نوع چله
-  let tasks = challengeTasks[currentChallengeData.type] || challengeTasks["خشم و تنظیم هیجان"];
-  
-  const grid = document.getElementById('challengeGrid');
-  if(!grid) return;
-  
-  grid.innerHTML = tasks.map((task, i) => {
-    const isDone = currentChallengeData.completedDays.includes(i);
-    return `
-      <div class="dayCard ${isDone ? 'done' : ''}" onclick="toggleChallengeDay(${i})">
-        <div class="dayNum">روز ${i + 1}</div>
-        <div class="dayTask">${task}</div>
-        <div class="dayCheck">${isDone ? '✅' : '⭕'}</div>
-      </div>
-    `;
-  }).join('');
-
-  const doneCount = currentChallengeData.completedDays.length;
-  const progressPercent = Math.round((doneCount / 40) * 100);
-  
-  document.getElementById('challengeProgressBar').style.width = progressPercent + '%';
-  document.getElementById('challengeProgressText').textContent = doneCount + ' از ۴۰ روز ( ' + progressPercent + '٪ )';
-
-  const resultBox = document.getElementById('challengeResult');
-  if (doneCount >= 40) { 
-    resultBox.classList.remove('hidden');
-    showChallengeResult(progressPercent);
-  } else {
-    resultBox.classList.add('hidden');
-  }
-}
-
-  if(intro) intro.classList.add('hidden');
-  if(active) active.classList.remove('hidden');
-
-  document.getElementById('challengeTitle').textContent = 'چله درمان ' + currentChallengeData.type;
-  
-  const grid = document.getElementById('challengeGrid');
-  if(!grid) return;
-  
-  grid.innerHTML = challengeTasks.map((task, i) => {
-    const isDone = currentChallengeData.completedDays.includes(i);
-    return `
 function renderChallenge() {
   const intro = document.getElementById('challengeIntro');
   const active = document.getElementById('challengeActive');
@@ -991,11 +677,8 @@ function renderChallenge() {
 
 function toggleChallengeDay(index) {
   const idx = currentChallengeData.completedDays.indexOf(index);
-  if (idx > -1) {
-    currentChallengeData.completedDays.splice(idx, 1);
-  } else {
-    currentChallengeData.completedDays.push(index);
-  }
+  if (idx > -1) { currentChallengeData.completedDays.splice(idx, 1); } 
+  else { currentChallengeData.completedDays.push(index); }
   localStorage.setItem('noskheh_challenge_data', JSON.stringify(currentChallengeData));
   renderChallenge();
 }
@@ -1008,18 +691,12 @@ function showChallengeResult(percent) {
 
   if (percent >= 80) {
     title.textContent = '🎉 تبریک! چله رو با موفقیت به پایان رسوندی!';
-    hadithBox.innerHTML = `
-      <span class="arabic">«مَنْ کَظَمَ غَیْظَهُ وَ هُوَ یَقْدِرُ عَلَی إِنْفَاذِهِ، أَبْدَلَهُ اللَّهُ عَزَّ وَ جَلَّ یَوْمَ الْقِیَامَةِ أَمْناً وَ إِیمَاناً»</span>
-      <br>پیامبر اکرم (ص): هر کس خشمی را که می‌تواند اعمال کند، فرو ببرد، خداوند متعال در روز قیامت به جای آن، امنیت و ایمان به او عطا می‌کند.
-    `;
+    hadithBox.innerHTML = `<span class="arabic">«مَنْ کَظَمَ غَیْظَهُ وَ هُوَ یَقْدِرُ عَلَی إِنْفَاذِهِ، أَبْدَلَهُ اللَّهُ عَزَّ وَ جَلَّ یَوْمَ الْقِیَامَةِ أَمْناً وَ إِیمَاناً»</span><br>پیامبر اکرم (ص): هر کس خشمی را که می‌تواند اعمال کند، فرو ببرد، خداوند متعال در روز قیامت به جای آن، امنیت و ایمان به او عطا می‌کند.`;
     message.textContent = 'تو نشون دادی که می‌تونی کنترل خشم رو یاد بگیری. این یه پیروزی بزرگه!';
     restartBtn.style.display = 'none';
   } else {
     title.textContent = '💪 تلاش خوبی بود!';
-    hadithBox.innerHTML = `
-      <span class="arabic">«لا تَكُن مِمَّن يَرجو الآخِرَةَ بِغَيرِ عَمَلٍ»</span>
-      <br>امام علی (ع): از کسانی نباش که بدون عمل به آخرت امید دارند.
-    `;
+    hadithBox.innerHTML = `<span class="arabic">«لا تَكُن مِمَّن يَرجو الآخِرَةَ بِغَيرِ عَمَلٍ»</span><br>امام علی (ع): از کسانی نباش که بدون عمل به آخرت امید دارند.`;
     message.textContent = 'نگران نباش، قرار نیست همیشه همه چیز کامل باشه. تو شروع کردی و این خودش یه پیروزیه. دوباره از اول شروع کن!';
     restartBtn.style.display = 'inline-block';
   }
@@ -1032,28 +709,6 @@ function resetChallenge() {
     renderChallenge();
   }
 }
-
-// اتصال به آزمون: وقتی آزمون تموم شد، چله فعال بشه
-function activateChallengeBasedOnTest() {
-  if (latestScores) {
-    const maxScore = Math.max(...latestScores);
-    const maxIndex = latestScores.indexOf(maxScore);
-    const domainName = domains[maxIndex].name;
-    
-    // اگر چله قبلاً شروع نشده باشه
-    if (!currentChallengeData.type) {
-        currentChallengeData.type = domainName;
-        currentChallengeData.startDate = new Date().toISOString();
-        localStorage.setItem('noskheh_challenge_data', JSON.stringify(currentChallengeData));
-    }
-  }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  initChallenge();
-  renderChallenge(); 
-});
-
 </script>
 </body>
-</html>
+</html>  
