@@ -887,11 +887,50 @@ function renderChallenge() {
   const intro = document.getElementById('challengeIntro');
   const active = document.getElementById('challengeActive');
   
+  // اگر کاربر هیچ چله‌ای فعال نداره، صفحه معرفی (اول آزمون بده) رو نشون بده
   if (!currentChallengeData.type) {
     if(intro) intro.classList.remove('hidden');
     if(active) active.classList.add('hidden');
     return;
   }
+
+  // اگر چله فعال داره، صفحه جدول رو نشون بده
+  if(intro) intro.classList.add('hidden');
+  if(active) active.classList.remove('hidden');
+
+  document.getElementById('challengeTitle').textContent = 'چله درمان ' + currentChallengeData.type;
+  
+  // انتخاب لیست تمرین‌ها بر اساس نوع چله
+  let tasks = challengeTasks[currentChallengeData.type] || challengeTasks["خشم و تنظیم هیجان"];
+  
+  const grid = document.getElementById('challengeGrid');
+  if(!grid) return;
+  
+  grid.innerHTML = tasks.map((task, i) => {
+    const isDone = currentChallengeData.completedDays.includes(i);
+    return `
+      <div class="dayCard ${isDone ? 'done' : ''}" onclick="toggleChallengeDay(${i})">
+        <div class="dayNum">روز ${i + 1}</div>
+        <div class="dayTask">${task}</div>
+        <div class="dayCheck">${isDone ? '✅' : '⭕'}</div>
+      </div>
+    `;
+  }).join('');
+
+  const doneCount = currentChallengeData.completedDays.length;
+  const progressPercent = Math.round((doneCount / 40) * 100);
+  
+  document.getElementById('challengeProgressBar').style.width = progressPercent + '%';
+  document.getElementById('challengeProgressText').textContent = doneCount + ' از ۴۰ روز ( ' + progressPercent + '٪ )';
+
+  const resultBox = document.getElementById('challengeResult');
+  if (doneCount >= 40) { 
+    resultBox.classList.remove('hidden');
+    showChallengeResult(progressPercent);
+  } else {
+    resultBox.classList.add('hidden');
+  }
+}
 
   if(intro) intro.classList.add('hidden');
   if(active) active.classList.remove('hidden');
