@@ -173,6 +173,145 @@ button{cursor:pointer}
 @media(max-width:900px){.challengeGrid{grid-template-columns:repeat(4,1fr)}.links{gap:12px}.links a{font-size:.82rem}}
 @media(max-width:800px){.heroGrid{grid-template-columns:1fr}.heroArt{min-height:230px}.cards{grid-template-columns:1fr 1fr}.links{display:none}.testBand .inner{display:block}.testBand .btn{margin-top:18px}.footerGrid{grid-template-columns:1fr 1fr}.virtueGrid{grid-template-columns:1fr}}
 @media(max-width:540px){.cards,.footerGrid,.resultGrid{grid-template-columns:1fr}.hero{padding:48px 0}.panel{padding:18px}.question{font-size:1.1rem}.navin{min-height:66px}.testBand h2{font-size:1.5rem}.challengeGrid{grid-template-columns:repeat(2,1fr)}}
+/* استایل‌های چله ۴۰ روزه */
+.challengeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.dayCard {
+  background: var(--paper);
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.dayCard:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.dayCard.done {
+  background: var(--soft);
+  border-color: var(--green);
+}
+
+.dayCard.locked {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #f0f0f0;
+}
+
+.dayNum {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--muted);
+  margin-bottom: 5px;
+}
+
+.dayTask {
+  font-size: 0.75rem;
+  color: var(--ink);
+  line-height: 1.4;
+  min-height: 35px;
+}
+
+.dayCheck {
+  font-size: 1.2rem;
+  margin-top: 5px;
+  color: var(--green);
+}
+
+.dayCard.done .dayCheck {
+  color: var(--green);
+}
+
+.challengeProgressWrap {
+  margin: 20px 0;
+}
+
+.challengeProgressBar {
+  height: 10px;
+  background: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.challengeProgressBar span {
+  display: block;
+  height: 100%;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.challengeProgressText {
+  text-align: left;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 5px;
+}
+
+.resultBox {
+  margin-top: 30px;
+  padding: 25px;
+  border-radius: 20px;
+  background: var(--soft);
+  text-align: center;
+  border: 2px solid var(--gold);
+}
+
+.resultBox h3 {
+  color: var(--green);
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.resultHadith {
+  background: #fff7e4;
+  padding: 20px;
+  border-radius: 15px;
+  margin: 15px 0;
+  border-right: 4px solid var(--gold);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.resultHadith .arabic {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--green);
+  display: block;
+  margin-bottom: 10px;
+}
+
+.resultMessage {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-bottom: 15px;
+}
+
+/* دکمه شروع دوباره */
+#restartChallengeBtn {
+  background: var(--gold);
+  color: var(--green);
+  font-weight: 700;
+  padding: 12px 30px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#restartChallengeBtn:hover {
+  background: #b08d3e;
+  transform: scale(1.05);
+}
 </style>
 </head>
 <body>
@@ -198,7 +337,7 @@ button{cursor:pointer}
       <a href="#" onclick="showPage('hekmat');return false">نسخه‌های علوی</a>
       <a href="#" onclick="showPage('child');return false">همسفر کوچک</a>
       <a href="#" onclick="showPage('virtues');return false">داروخانه</a>
-      <a href="#" onclick="showPage('challenge');return false">چالش</a>
+      <a href="#" onclick="showPage('challenge');return false">چله خودسازی</a>
       <a href="#" onclick="showPage('about');return false">درباره</a>
     </div>
     <button class="btn" onclick="showPage('test')">شروع آینه جان</button>
@@ -390,18 +529,34 @@ button{cursor:pointer}
 <section id="challengePage" class="page">
   <div class="wrap">
     <div class="pageTitle">
-      <span class="eyebrow">گام‌های کوچک</span>
-      <h1>چالش خودسازی ۷ روزه</h1>
-      <p>هر روز یک تمرین کوچک؛ پیشرفت شما ذخیره می‌شود.</p>
+      <span class="eyebrow">گام‌های کوچک، تغییرات بزرگ</span>
+      <h1>چله خودسازی</h1>
+      <p>برنامه ۴۰ روزه برای درمان و تقویت فضیلت‌ها.</p>
     </div>
-    <div class="panel">
-      <div class="challengeProgress">
-        <span>پیشرفت شما: <strong id="chProgress">۰ از ۷</strong></span>
-        <button class="resetBtn" onclick="resetChallenge()">شروع دوباره</button>
+
+    <div id="challengeIntro" class="panel">
+      <div class="notice">
+        <strong>توجه:</strong> برای دریافت برنامه ۴۰ روزه مخصوص خودت، ابتدا باید آزمون «آینه جان» رو انجام بدی.
       </div>
+      <button class="btn gold" style="margin-top:15px" onclick="showPage('test')">رفتن به آزمون آینه جان ←</button>
+    </div>
+
+    <div id="challengeActive" class="panel hidden">
+      <h2 id="challengeTitle" style="color:var(--green)">چله درمان خشم</h2>
+      <p id="challengeDesc" class="small">بر اساس نمره شما در آزمون، این برنامه پیشنهاد شده است.</p>
+      
+      <div class="progressWrap" style="margin-top:20px">
+        <div class="progress" id="challengeProgressBar" style="width:0%"></div>
+      </div>
+      <p class="small" style="text-align:left" id="challengeProgressText">۰ از ۴۰ روز</p>
+
       <div class="challengeGrid" id="challengeGrid"></div>
-      <div class="notice" style="margin-top:15px">
-        <strong>یادآوری:</strong> هدف، کامل بودن نیست؛ فقط قدم کوچک و مداوم است. اگر روزی را از دست دادی، فردا ادامه بده.
+
+      <div id="challengeResult" class="hidden" style="margin-top:30px; padding:20px; border-radius:15px; background:var(--soft); text-align:center;">
+        <h3 id="resultTitle" style="color:var(--green); font-size:1.5rem; margin-bottom:10px;"></h3>
+        <div id="resultHadith" style="background:#fff7e4; padding:15px; border-radius:12px; margin:15px 0; border-right:4px solid var(--gold);"></div>
+        <p id="resultMessage" class="small"></p>
+        <button id="restartChallengeBtn" class="btn gold" style="margin-top:15px" onclick="resetChallenge()">شروع دوباره از اول</button>
       </div>
     </div>
   </div>
@@ -682,19 +837,142 @@ function renderVirtues(){ const el = document.getElementById('virtueList'); if(!
 
 function toggleVirtue(vi,ci,checked){ const key = 'noskheh_virtue_'+vi; const saved = JSON.parse(localStorage.getItem(key) || '{}'); saved[ci] = checked; localStorage.setItem(key, JSON.stringify(saved)); }
 
-const challengeDays = [
-  {title:"مکث آگاهانه",desc:"امروز وقتی ناراحت شدی، قبل از پاسخ ۱۰ ثانیه مکث کن."},
-  {title:"تشکر از یک نفر",desc:"به کسی که کمتر دیده می‌شود، صمیمانه تشکر کن."},
-  {title:"گوش دادن کامل",desc:"در یک گفت‌وگو، بدون قطع کردن، کامل گوش بده."},
-  {title:"رها کردن رنجش",desc:"یک رنجش قدیمی را در ذهن رها کن."},
-  {title:"کمک کوچک",desc:"یک کار کوچک برای کسی انجام بده که انتظارش را ندارد."},
-  {title:"صداقت",desc:"امروز حتی در یک موضوع کوچک، کاملاً راست بگو."},
-  {title:"شکرگزاری",desc:"سه نعمت کوچک امروز را بنویس و شکرگزار باش."}
+/* ========================================================
+   منطق چله ۴۰ روزه (چله خودسازی)
+   ======================================================== */
+
+const challengeTasks = [
+  // دهه اول: شناخت و مکث (روز ۱ تا ۱۰)
+  "مکث ۵ ثانیه‌ای قبل از واکنش", "نفس عمیق و شمارش تا ۱۰", "نام‌گذاری احساس (بگو: الان عصبانی‌ام)", "فاصله‌گیری فیزیکی از موقعیت", "نوشتن یک محرک خشم", "تمرین سکوت در برابر یک ناراحتی کوچک", "گوش دادن بدون قطع کردن حرف طرف مقابل", "پرسیدن: آیا این موضوع ارزش عصبانیت دارد؟", "تغییر لحن صدا به آرامی", "تمرین لبخند زدن در لحظه ناراحتی",
+  // دهه دوم: تحلیل و خودآگاهی (روز ۱۱ تا ۲۰)
+  "نوشتن سه موقعیت خشم امروز", "بررسی دلیل واقعی عصبانیت", "تفکیک احساس از واقعیت", "پرسش از خود: چه چیزی باعث شد منفجر شوم؟", "تمرین پذیرش احساس بدون قضاوت", "نوشتن یک نامه نانوشته به کسی که ناراحتت کرد", "تمرین جایگزینی فکر منفی با فکر مثبت", "پیدا کردن یک الگوی تکراری در خشم", "صحبت با یک دوست درباره احساسات", "تمرین خودداری از سرزنش کردن",
+  // دهه سوم: تصمیم آگاهانه (روز ۲۱ تا ۳۰)
+  "تصمیم آگاهانه: آیا این کار از روی خشم است یا عقل؟", "بیان نیاز به جای حمله (من ناراحت شدم چون...)", "تمرین درخواست کردن به جای دستور دادن", "پذیرش مسئولیت سهم خودم در دعوا", "تمرین عذرخواهی در صورت اشتباه", "جایگزینی فحش با سکوت", "تمرین انتقاد سازنده به جای تخریب", "پرسش: اگر جای طرف مقابل بودم چه می‌کردم؟", "تمرین کنترل صدا در بحث", "تصمیم به ترک موقعیت در صورت شدت گرفتن خشم",
+  // دهه چهارم: همدلی و گذشت (روز ۳۱ تا ۴۰)
+  "درک احساس طرف مقابل (حتی اگر اشتباه کرده باشد)", "بخشش درونی (رها کردن کینه)", "نوشتن یک ویژگی خوب برای کسی که ناراحتت کرد", "تمرین انجام یک کار خوب برای طرف مقابل", "دعا برای آرامش خود و دیگران", "مرور پیشرفت خود در ۳۰ روز گذشته", "تشویق خود برای تلاش‌های انجام شده", "تعیین هدف برای آینده (چگونه خشم را کنترل کنم)", "نوشتن یک عهد با خودم", "جشن گرفتن پایان چله و موفقیت"
 ];
 
-function renderChallenge(){ const grid = document.getElementById('challengeGrid'); if(!grid) return; const saved = JSON.parse(localStorage.getItem('noskheh_challenge') || '[]'); grid.innerHTML = challengeDays.map((d,i)=>{ const done = saved[i]===true; return `<div class="dayCard ${done?'done':''}"><div class="dayNum">روز ${i+1}</div><div class="dayTitle">${d.title}</div><div class="small" style="margin:6px 0;font-size:.72rem">${d.desc}</div><button class="checkBtn" onclick="toggleChallenge(${i})">${done?'✓ انجام شد':'تیک'}</button></div>`; }).join(''); const doneCount = saved.filter(x=>x).length; const persianNums = ['۰','۱','۲','۳','۴','۵','۶','۷']; document.getElementById('chProgress').textContent = persianNums[doneCount] + ' از ۷'; }
-function toggleChallenge(i){ const saved = JSON.parse(localStorage.getItem('noskheh_challenge') || '[]'); saved[i] = !saved[i]; localStorage.setItem('noskheh_challenge', JSON.stringify(saved)); renderChallenge(); }
-function resetChallenge(){ if(confirm('آیا مطمئنی می‌خواهی پیشرفت چالش را پاک کنی؟')){ localStorage.removeItem('noskheh_challenge'); renderChallenge(); } }
+let currentChallengeData = {
+  type: null,
+  startDate: null,
+  completedDays: []
+};
+
+function initChallenge() {
+  const saved = localStorage.getItem('noskheh_challenge_data');
+  if (saved) {
+    currentChallengeData = JSON.parse(saved);
+  }
+}
+
+function renderChallenge() {
+  const intro = document.getElementById('challengeIntro');
+  const active = document.getElementById('challengeActive');
+  
+  if (!currentChallengeData.type) {
+    if(intro) intro.classList.remove('hidden');
+    if(active) active.classList.add('hidden');
+    return;
+  }
+
+  if(intro) intro.classList.add('hidden');
+  if(active) active.classList.remove('hidden');
+
+  document.getElementById('challengeTitle').textContent = 'چله درمان ' + currentChallengeData.type;
+  
+  const grid = document.getElementById('challengeGrid');
+  if(!grid) return;
+  
+  grid.innerHTML = challengeTasks.map((task, i) => {
+    const isDone = currentChallengeData.completedDays.includes(i);
+    return `
+      <div class="dayCard ${isDone ? 'done' : ''}" onclick="toggleChallengeDay(${i})">
+        <div class="dayNum">روز ${i + 1}</div>
+        <div class="dayTask">${task}</div>
+        <div class="dayCheck">${isDone ? '✅' : '⭕'}</div>
+      </div>
+    `;
+  }).join('');
+
+  const doneCount = currentChallengeData.completedDays.length;
+  const progressPercent = Math.round((doneCount / 40) * 100);
+  
+  document.getElementById('challengeProgressBar').style.width = progressPercent + '%';
+  document.getElementById('challengeProgressText').textContent = doneCount + ' از ۴۰ روز ( ' + progressPercent + '٪ )';
+
+  const resultBox = document.getElementById('challengeResult');
+  if (doneCount >= 40) { // فرض بر این است که همه ۴۰ روز انجام شده
+    resultBox.classList.remove('hidden');
+    showChallengeResult(progressPercent);
+  } else {
+    resultBox.classList.add('hidden');
+  }
+}
+
+function toggleChallengeDay(index) {
+  const idx = currentChallengeData.completedDays.indexOf(index);
+  if (idx > -1) {
+    currentChallengeData.completedDays.splice(idx, 1);
+  } else {
+    currentChallengeData.completedDays.push(index);
+  }
+  localStorage.setItem('noskheh_challenge_data', JSON.stringify(currentChallengeData));
+  renderChallenge();
+}
+
+function showChallengeResult(percent) {
+  const title = document.getElementById('resultTitle');
+  const hadithBox = document.getElementById('resultHadith');
+  const message = document.getElementById('resultMessage');
+  const restartBtn = document.getElementById('restartChallengeBtn');
+
+  if (percent >= 80) {
+    title.textContent = '🎉 تبریک! چله رو با موفقیت به پایان رسوندی!';
+    hadithBox.innerHTML = `
+      <span class="arabic">«مَنْ کَظَمَ غَیْظَهُ وَ هُوَ یَقْدِرُ عَلَی إِنْفَاذِهِ، أَبْدَلَهُ اللَّهُ عَزَّ وَ جَلَّ یَوْمَ الْقِیَامَةِ أَمْناً وَ إِیمَاناً»</span>
+      <br>پیامبر اکرم (ص): هر کس خشمی را که می‌تواند اعمال کند، فرو ببرد، خداوند متعال در روز قیامت به جای آن، امنیت و ایمان به او عطا می‌کند.
+    `;
+    message.textContent = 'تو نشون دادی که می‌تونی کنترل خشم رو یاد بگیری. این یه پیروزی بزرگه!';
+    restartBtn.style.display = 'none';
+  } else {
+    title.textContent = '💪 تلاش خوبی بود!';
+    hadithBox.innerHTML = `
+      <span class="arabic">«لا تَكُن مِمَّن يَرجو الآخِرَةَ بِغَيرِ عَمَلٍ»</span>
+      <br>امام علی (ع): از کسانی نباش که بدون عمل به آخرت امید دارند.
+    `;
+    message.textContent = 'نگران نباش، قرار نیست همیشه همه چیز کامل باشه. تو شروع کردی و این خودش یه پیروزیه. دوباره از اول شروع کن!';
+    restartBtn.style.display = 'inline-block';
+  }
+}
+
+function resetChallenge() {
+  if (confirm('آیا مطمئنی می‌خوای چله رو از اول شروع کنی؟')) {
+    currentChallengeData.completedDays = [];
+    localStorage.setItem('noskheh_challenge_data', JSON.stringify(currentChallengeData));
+    renderChallenge();
+  }
+}
+
+// اتصال به آزمون: وقتی آزمون تموم شد، چله فعال بشه
+function activateChallengeBasedOnTest() {
+  if (latestScores) {
+    const maxScore = Math.max(...latestScores);
+    const maxIndex = latestScores.indexOf(maxScore);
+    const domainName = domains[maxIndex].name;
+    
+    // اگر چله قبلاً شروع نشده باشه
+    if (!currentChallengeData.type) {
+        currentChallengeData.type = domainName;
+        currentChallengeData.startDate = new Date().toISOString();
+        localStorage.setItem('noskheh_challenge_data', JSON.stringify(currentChallengeData));
+    }
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initChallenge();
+  renderChallenge(); 
+});
 
 document.addEventListener('DOMContentLoaded', ()=>{ renderDomainCards(); renderHekmat(); renderChild(); renderVirtues(); renderChallenge(); try{ const saved = JSON.parse(localStorage.getItem('noskheh_scores') || 'null'); if(saved && saved.length===8){ latestScores = saved; buildReport(); } }catch(e){} }); که
 </script>
