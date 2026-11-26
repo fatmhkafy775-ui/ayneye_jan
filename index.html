@@ -430,7 +430,7 @@ button{cursor:pointer}
     <div class="pageTitle">
       <span class="eyebrow">نسخه طبیب / آینه جان</span>
       <h1>آزمون خودشناسی اخلاقی</h1>
-      <p>۴۰ پرسش در ۸ حوزه؛ حدود ۸ تا ۱۲ دقیقه.</p>
+      <p>۲۴ پرسش در ۸ حوزه؛ حدود ۸ تا ۱۲ دقیقه.</p>
     </div>
 
     <div id="introPanel" class="panel">
@@ -453,7 +453,7 @@ button{cursor:pointer}
     <div id="quizPanel" class="panel hidden">
       <div class="qtop">
         <span id="domainLabel">حوزه اول</span>
-        <span id="qCount">پرسش ۱ از ۴۰</span>
+        <span id="qCount">پرسش ۱ از ۲۴</span>
       </div>
       <div class="progressWrap"><div class="progress" id="progress"></div></div>
       <div class="question" id="questionText"></div>
@@ -746,6 +746,13 @@ function buildReport(){
   
   out += `<div class="notice" style="margin-top:20px"><strong>یادآوری:</strong> این پرسش‌نامه نسخه اولیه تأملی است و هنوز روایی و پایایی آن در پژوهش مستقل بررسی نشده است. برای بررسی مشکلات روان‌شناختی، با متخصص واجد صلاحیت گفت‌وگو کنید.</div>`; 
   out += `<div class="resultActions"><button class="btn" onclick="window.print()">چاپ / ذخیره PDF</button><button class="btn outline" onclick="copyReport()">کپی گزارش</button><button class="btn outline" onclick="resetTest()">شروع دوباره آزمون</button><button class="btn outline" onclick="showPage('home')">بازگشت به خانه</button></div>`; 
+  // اضافه کردن دکمه رفتن به چله خودسازی
+out += `
+  <div style="margin-top: 20px; padding: 20px; background: #fff7e4; border-radius: 15px; border: 1px solid var(--gold); text-align: center;">
+    <p style="color: var(--green); font-weight: bold; margin-bottom: 10px;">بر اساس نمره‌های شما، پیشنهاد می‌شه برنامه ۴۰ روزه خودسازی رو شروع کنید.</p>
+    <button class="btn gold" onclick="showPage('challenge')">مشاهده چله خودسازی ←</button>
+  </div>
+`;
   document.getElementById('reportContent').innerHTML = out; 
 }
 
