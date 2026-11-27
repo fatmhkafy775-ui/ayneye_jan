@@ -669,15 +669,13 @@ function renderChallenge() {
   document.getElementById('challengeProgressBar').style.width = progressPercent + '%';
   document.getElementById('challengeProgressText').textContent = doneCount + ' از ۴۰ روز ( ' + progressPercent + '٪ )';
 
-  const endBtn = document.getElementById('endChallengeBtn');
-if (endBtn) {
-  if (doneCount > 0 && doneCount < 40) {
-    endBtn.style.display = 'inline-block';
-  } else {
-    endBtn.style.display = 'none';
-  }
+  const resultBox = document.getElementById('challengeResult');
+if (doneCount >= 40) { 
+  resultBox.classList.remove('hidden');
+  showChallengeResult(progressPercent);
+} else {
+  resultBox.classList.add('hidden');
 }
-
 function toggleChallengeDay(index) {
   const idx = currentChallengeData.completedDays.indexOf(index);
   if (idx > -1) { currentChallengeData.completedDays.splice(idx, 1); } 
