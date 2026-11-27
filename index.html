@@ -21,10 +21,8 @@ body{margin:0;background:var(--cream);color:var(--ink);font-family:"Vazirmatn",T
 button,input,select,textarea{font:inherit}
 button{cursor:pointer}
 .wrap{width:min(1120px,92%);margin:auto}
-
 .topbar{background:var(--green);color:#f7f4eb;font-size:.86rem;padding:8px 0}
 .topbar .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-
 .nav{position:sticky;top:0;z-index:20;background:rgba(255,253,248,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .navin{display:flex;align-items:center;justify-content:space-between;min-height:76px;gap:18px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--green)}
@@ -34,13 +32,11 @@ button{cursor:pointer}
 .links{display:flex;gap:18px;align-items:center}
 .links a{color:var(--ink);text-decoration:none;font-size:.88rem;transition:.2s}
 .links a:hover{color:var(--gold)}
-
 .btn{border:0;border-radius:13px;padding:11px 19px;background:var(--green);color:white;font-weight:600;transition:.2s;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
 .btn:hover{background:var(--green2);transform:translateY(-1px)}
 .btn.gold{background:var(--gold);color:#1e302a}
 .btn.outline{background:transparent;border:1px solid var(--green);color:var(--green)}
 .btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
-
 .hero{padding:76px 0 60px;background:radial-gradient(circle at 10% 15%,rgba(197,164,91,.17),transparent 28%),linear-gradient(135deg,#f7f4eb,#eef3ed)}
 .heroGrid{display:grid;grid-template-columns:1.2fr .8fr;gap:42px;align-items:center}
 .eyebrow{color:var(--green2);font-weight:700;font-size:.85rem;letter-spacing:.02em}
@@ -53,28 +49,23 @@ button{cursor:pointer}
 .heroArt:after{width:210px;height:210px}
 .mirror{width:150px;height:190px;border:3px solid var(--gold);border-radius:50% 50% 44% 44%;display:grid;place-items:center;color:#e8d7a9;font-size:4.5rem;z-index:1;box-shadow:0 0 0 12px rgba(197,164,91,.08),0 0 45px rgba(197,164,91,.16)}
 .heroArt p{position:absolute;bottom:16px;color:#e6dfc9;font-size:.8rem;z-index:2;padding:0 16px;text-align:center}
-
 .section{padding:66px 0}
 .sectionHead{text-align:center;max-width:720px;margin:0 auto 34px}
 .sectionHead h2{font-size:2rem;color:var(--green);margin:0 0 8px}
 .sectionHead p{color:var(--muted);margin:0}
-
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 8px 25px rgba(20,52,43,.035);transition:.2s}
 .card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
 .card .ico{width:48px;height:48px;border-radius:15px;background:var(--soft);display:grid;place-items:center;font-size:1.5rem;margin-bottom:14px}
 .card h3{color:var(--green);margin:0 0 7px;font-size:1.15rem}
 .card p{color:var(--muted);font-size:.92rem;margin:0}
-
 .testBand{background:var(--green);color:#f7f4eb;padding:55px 0}
 .testBand .inner{display:flex;align-items:center;justify-content:space-between;gap:25px}
 .testBand h2{font-size:1.8rem;margin:0 0 8px}
 .testBand p{color:#d7e2dc;margin:0}
 .testBand .btn{background:var(--gold);color:#20332c;white-space:nowrap}
-
 .quote{background:#efe8d7;border-right:4px solid var(--gold);padding:22px 25px;border-radius:14px;color:#4c554c}
 .quote strong{color:var(--green)}
-
 .footer{background:#0e302a;color:#dbe5df;padding:38px 0 22px}
 .footerGrid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:25px}
 .footer h3{color:#e8d6a5;margin-top:0}
@@ -82,7 +73,6 @@ button{cursor:pointer}
 .footer a{display:block;text-decoration:none;margin:5px 0;transition:.2s}
 .footer a:hover{color:var(--gold)}
 .copy{border-top:1px solid rgba(255,255,255,.13);margin-top:25px;padding-top:15px;color:#9fb2a8;font-size:.78rem}
-
 .page{display:none;padding:42px 0 70px;min-height:65vh}
 .page.active{display:block}
 .pageTitle{margin-bottom:26px}
@@ -92,7 +82,6 @@ button{cursor:pointer}
 .notice{background:#fff7e4;border:1px solid #ead9aa;border-radius:14px;padding:15px 17px;color:#64532d;font-size:.9rem}
 .small{font-size:.82rem;color:var(--muted)}
 .hidden{display:none!important}
-
 .progressWrap{height:8px;background:#e8e7df;border-radius:99px;overflow:hidden;margin:18px 0 8px}
 .progress{height:100%;background:var(--gold);width:0;transition:.25s}
 .qtop{display:flex;justify-content:space-between;color:var(--muted);font-size:.85rem;gap:10px}
@@ -103,7 +92,6 @@ button{cursor:pointer}
 .answer.selected{border-color:var(--green);background:var(--soft)}
 .answer input{accent-color:var(--green);width:18px;height:18px}
 .qactions{display:flex;justify-content:space-between;gap:12px;margin-top:25px}
-
 .resultGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin:22px 0}
 .scoreCard{border:1px solid var(--line);border-radius:15px;padding:17px;background:#fff}
 .scoreHead{display:flex;justify-content:space-between;gap:10px;font-weight:650;color:var(--green)}
@@ -121,7 +109,6 @@ button{cursor:pointer}
 .consent input{margin-top:8px;accent-color:var(--green)}
 .field{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;background:white}
 .pill{display:inline-block;border-radius:99px;background:var(--soft);color:var(--green);padding:4px 12px;font-size:.8rem;margin:3px}
-
 .hekmatCard{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:26px;margin-bottom:22px;box-shadow:0 8px 25px rgba(20,52,43,.04)}
 .hekmatCard .num{display:inline-block;background:var(--green);color:var(--gold);padding:4px 14px;border-radius:99px;font-size:.8rem;font-weight:700;margin-bottom:12px}
 .hekmatCard .arabic{font-size:1.3rem;line-height:2.2;color:var(--green);text-align:center;padding:20px;background:var(--soft);border-radius:14px;margin:15px 0;font-weight:600;direction:rtl}
@@ -137,7 +124,6 @@ button{cursor:pointer}
 .hekmatCard .ask h4{margin:0 0 8px;color:#64532d;font-size:.95rem}
 .hekmatCard .ask p{margin:0;color:#64532d;font-size:.9rem}
 .hekmatCard .source{color:var(--muted);font-size:.82rem;margin-top:12px;text-align:left}
-
 .storyCard{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:26px;margin-bottom:22px;box-shadow:0 8px 25px rgba(20,52,43,.04)}
 .storyCard h3{color:var(--green);margin:0 0 15px;font-size:1.3rem}
 .storyCard .story{font-size:1rem;line-height:2;color:#4c554c;padding:16px;background:var(--soft);border-radius:14px;margin:15px 0}
@@ -147,7 +133,6 @@ button{cursor:pointer}
 .storyCard .challenge{background:#fff7e4;border:1px solid #ead9aa;padding:16px;border-radius:12px;margin:15px 0}
 .storyCard .challenge h4{margin:0 0 8px;color:#64532d}
 .storyCard .challenge p{margin:0;color:#64532d;font-size:.92rem}
-
 .virtueGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 .virtueCard{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 8px 25px rgba(20,52,43,.04)}
 .virtueCard h3{color:var(--green);margin:0 0 10px;font-size:1.15rem}
@@ -159,7 +144,6 @@ button{cursor:pointer}
 .checkList li:last-child{border:0}
 .checkList input{width:18px;height:18px;accent-color:var(--green);cursor:pointer}
 .checkList label{cursor:pointer;flex:1}
-
 .challengeGrid{display:grid;grid-template-columns:repeat(auto-fill, minmax(90px, 1fr));gap:10px;margin-top:20px}
 .dayCard{background:var(--paper);border:2px solid var(--line);border-radius:12px;padding:10px;text-align:center;cursor:pointer;transition:all 0.2s ease;position:relative}
 .dayCard:hover{border-color:var(--gold);transform:translateY(-2px)}
@@ -178,7 +162,6 @@ button{cursor:pointer}
 .resultMessage{font-size:0.95rem;color:var(--muted);margin-bottom:15px}
 #restartChallengeBtn{background:var(--gold);color:var(--green);font-weight:700;padding:12px 30px;border-radius:50px;border:none;cursor:pointer;transition:all 0.2s ease}
 #restartChallengeBtn:hover{background:#b08d3e;transform:scale(1.05)}
-
 @media(max-width:900px){.links{gap:12px}.links a{font-size:.82rem}}
 @media(max-width:800px){.heroGrid{grid-template-columns:1fr}.heroArt{min-height:230px}.cards{grid-template-columns:1fr 1fr}.links{display:none}.testBand .inner{display:block}.testBand .btn{margin-top:18px}.footerGrid{grid-template-columns:1fr 1fr}.virtueGrid{grid-template-columns:1fr}}
 @media(max-width:540px){.cards,.footerGrid,.resultGrid{grid-template-columns:1fr}.hero{padding:48px 0}.panel{padding:18px}.question{font-size:1.1rem}.navin{min-height:66px}.testBand h2{font-size:1.5rem}.challengeGrid{grid-template-columns:repeat(2,1fr)}}
@@ -418,8 +401,9 @@ button{cursor:pointer}
       <p class="small" style="text-align:left" id="challengeProgressText">۰ از ۴۰ روز</p>
 
       <div class="challengeGrid" id="challengeGrid"></div>
+
       <div style="text-align: center; margin-top: 30px;">
-  <button class="btn gold" id="endChallengeBtn" style="display: none; padding: 15px 40px; font-size: 1.1rem;" onclick="finishChallenge()">🏁 پایان چله و مشاهده نتیجه</button>
+        <button class="btn gold" id="endChallengeBtn" style="display: none; padding: 15px 40px; font-size: 1.1rem;" onclick="finishChallenge()">🏁 پایان چله و مشاهده نتیجه</button>
       </div>
 
       <div id="challengeResult" class="hidden" style="margin-top:30px; padding:20px; border-radius:15px; background:var(--soft); text-align:center;">
@@ -583,6 +567,7 @@ function resetTest(){ answers = Array(24).fill(null); current = 0; const intro =
 
 const domainIcons = ['🌿','🌼','🪶','🕊️','🍃','🧭','🤝','⏳'];
 function renderDomainCards(){ const el = document.getElementById('domainCards'); if(!el) return; el.innerHTML = domains.map((d,i)=>`<div class="card"><div class="ico">${domainIcons[i]}</div><h3>${d.name}</h3><p>${d.desc}</p><p style="margin-top:12px"><strong style="color:var(--green)">تمرین:</strong> ${d.solution}</p></div>`).join(''); }
+
 const hekmats = [
   {number: 134, arabic: "لَا يَكُونُ الصَّدِيقُ صَدِيقاً حَتَّى يَحْفَظَ أَخَاهُ فِي ثَلَاثٍ: فِي نَكْبَتِهِ وَ غَيْبَتِهِ وَ وَفَاتِهِ.", translation: "دوست، دوست واقعی نیست مگر آنکه بر برادر (رفیق) خود در سه حالت وفادار باشد: در سختی و مصیبت، در غیاب او، و در هنگام مرگ او.", words: [{ar:"نَکْبَة",fa:"سختی، مصیبت و گرفتاری"},{ar:"غَيْبَة",fa:"غیاب، نبودن و زمانی که فرد حضور ندارد"}], reflect: ["آزمونِ مصیبت (نکبت): دوستی واقعی در روزهای خوش و رفاه نیست؛ بلکه کسی است که در روزهای تیره و تار و در برابر سختی‌ها، مانند تکیه‌گاهی محکم در کنار تو باشد.","آزمونِ غیاب (غیبت): سخت‌ترین آزمون، زمانی است که تو حضور نداری. آیا رفیق تو در غیاب تو، از نام و اعتبار و حقوق تو دفاع می‌کند؟","آزمونِ وفاداریِ پایانی (وفات): وفاداری به دوست، تنها تا زمانی که او زنده است نیست؛ بلکه رعایت حرمت او و یادکرد نیک او حتی پس از مرگ، نشانه‌ی اصالتِ دوستی است."], ask: "دوستان ما در چه زمانی کیفیتِ واقعیِ خود را نشان می‌دهند؟ ۱. در روزهای خوش ۲. در حضورِ مداوم ۳. در روزهای سختی، غیبت و حتی پس از مرگ ۴. تنها در زمان‌هایی که منافع مشترکی وجود دارد"},
   {number: 135, arabic: "مَنْ أُعْطِيَ أَرْبَعاً لَمْ يُحْرَمْ أَرْبَعاً؛ مَنْ أُعْطِيَ الدُّعَاءَ لَمْ يُحْرَمِ الْإِجَابَةَ، وَ مَنْ أُعْطِيَ التَّوْبَةَ لَمْ يُحْرَمِ الْقَبُولَ، وَ مَنْ أُعْطِيَ الِاسْتِغْفَارَ لَمْ يُحْرَمِ الْمَغْفِرَةَ، وَ مَنْ أُعْطِيَ الشُّكْرَ لَمْ يُحْرَمِ الزِّيَادَةَ.", translation: "هر کس چهار چیز به او داده شود، از چهار چیز محروم نخواهد شد: هر کس به او توانِ دعا داده شود، از اجابت محروم نمی‌شود؛ و هر کس توانِ توبه داده شود، از پذیرفته شدن محروم نمی‌شود؛ و هر کس توانِ استغفار داده شود، از آمرزش محروم نمی‌شود؛ و هر کس توانِ شکرگزاری داده شود، از نعمتِ افزون محروم نمی‌شود.", words: [{ar:"دُعَاء",fa:"دعا کردن و درخواست از پروردگار"},{ar:"تَوْبَة",fa:"بازگشت از مسیر اشتباه"},{ar:"اِسْتِغْفَار",fa:"طلب بخشش مداوم"},{ar:"شُكْر",fa:"شکرگزاری برای داشته‌های فعلی"}], reflect: ["توانایی، خود یک نعمت است: اینکه انسان بتواند دعا، توبه یا شکر کند، نشانه‌ی این است که خداوند درهای رحمت را به روی او باز کرده است.","پیوندِ عمل و نتیجه: در این حکمت، میانِ هر عمل و نتیجه‌ای الهی، پیوندی ناگسستنی برقرار شده است.","رهایی از محرومیت: کسی که این چهار کلید را در دست داشته باشد، هرگز از نعمت‌های اصلی زندگی محروم نخواهد ماند."], ask: "کدام‌یک در زندگی شما گم شده؟ ۱. دعا کردن ۲. توبه ۳. استغفار ۴. شکرگزاری"},
@@ -611,7 +596,6 @@ const virtues = [
 ];
 function renderVirtues(){ const el = document.getElementById('virtueList'); if(!el) return; el.innerHTML = virtues.map((v,i)=>{ const saved = JSON.parse(localStorage.getItem('noskheh_virtue_'+i) || '{}'); return `<div class="virtueCard"><h3>${v.icon} ${v.name}</h3><p class="desc">${v.desc}</p><div class="habit"><strong>تمرین روزانه:</strong> ${v.habit}</div><div class="small" style="margin-top:10px">چک‌لیست امروز:</div><ul class="checkList">${v.checklist.map((c,j)=>`<li><input type="checkbox" id="v${i}c${j}" ${saved[j]?'checked':''} onchange="toggleVirtue(${i},${j},this.checked)"><label for="v${i}c${j}">${c}</label></li>`).join('')}</ul></div>`; }).join(''); }
 function toggleVirtue(vi,ci,checked){ const key = 'noskheh_virtue_'+vi; const saved = JSON.parse(localStorage.getItem(key) || '{}'); saved[ci] = checked; localStorage.setItem(key, JSON.stringify(saved)); }
-
 const challengeTasks = {
   "خشم و تنظیم هیجان": [
     "مکث ۵ ثانیه‌ای قبل از واکنش", "نفس عمیق و شمارش تا ۱۰", "نام‌گذاری احساس (بگو: الان عصبانی‌ام)", "فاصله‌گیری فیزیکی از موقعیت", "نوشتن یک محرک خشم", "تمرین سکوت در برابر یک ناراحتی کوچک", "گوش دادن بدون قطع کردن حرف طرف مقابل", "پرسیدن: آیا این موضوع ارزش عصبانیت دارد؟", "تغییر لحن صدا به آرامی", "تمرین لبخند زدن در لحظه ناراحتی",
@@ -669,19 +653,32 @@ function renderChallenge() {
   document.getElementById('challengeProgressBar').style.width = progressPercent + '%';
   document.getElementById('challengeProgressText').textContent = doneCount + ' از ۴۰ روز ( ' + progressPercent + '٪ )';
 
-  const resultBox = document.getElementById('challengeResult');
-if (doneCount >= 40) { 
-  resultBox.classList.remove('hidden');
-  showChallengeResult(progressPercent);
-} else {
-  resultBox.classList.add('hidden');
+  const endBtn = document.getElementById('endChallengeBtn');
+  if (endBtn) {
+    if (doneCount > 0 && doneCount < 40) {
+      endBtn.style.display = 'inline-block';
+    } else {
+      endBtn.style.display = 'none';
+    }
+  }
 }
+
 function toggleChallengeDay(index) {
   const idx = currentChallengeData.completedDays.indexOf(index);
   if (idx > -1) { currentChallengeData.completedDays.splice(idx, 1); } 
   else { currentChallengeData.completedDays.push(index); }
   localStorage.setItem('noskheh_challenge_data', JSON.stringify(currentChallengeData));
   renderChallenge();
+}
+
+function finishChallenge() {
+  const doneCount = currentChallengeData.completedDays.length;
+  const progressPercent = Math.round((doneCount / 40) * 100);
+  const resultBox = document.getElementById('challengeResult');
+  if (resultBox) {
+    resultBox.classList.remove('hidden');
+    showChallengeResult(progressPercent);
+  }
 }
 
 function showChallengeResult(percent) {
@@ -710,16 +707,6 @@ function resetChallenge() {
     renderChallenge();
   }
 }
-  function finishChallenge() {
-  const doneCount = currentChallengeData.completedDays.length;
-  const progressPercent = Math.round((doneCount / 40) * 100);
-  
-  const resultBox = document.getElementById('challengeResult');
-  if (resultBox) {
-    resultBox.classList.remove('hidden');
-    showChallengeResult(progressPercent);
-  }
-  }
 </script>
 </body>
-</html>  
+</html>
