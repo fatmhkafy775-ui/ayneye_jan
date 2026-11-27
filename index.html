@@ -418,6 +418,9 @@ button{cursor:pointer}
       <p class="small" style="text-align:left" id="challengeProgressText">۰ از ۴۰ روز</p>
 
       <div class="challengeGrid" id="challengeGrid"></div>
+      <div style="text-align: center; margin-top: 30px;">
+  <button class="btn gold" id="endChallengeBtn" style="display: none; padding: 15px 40px; font-size: 1.1rem;" onclick="finishChallenge()">🏁 پایان چله و مشاهده نتیجه</button>
+      </div>
 
       <div id="challengeResult" class="hidden" style="margin-top:30px; padding:20px; border-radius:15px; background:var(--soft); text-align:center;">
         <h3 id="resultTitle" style="color:var(--green); font-size:1.5rem; margin-bottom:10px;"></h3>
@@ -666,12 +669,12 @@ function renderChallenge() {
   document.getElementById('challengeProgressBar').style.width = progressPercent + '%';
   document.getElementById('challengeProgressText').textContent = doneCount + ' از ۴۰ روز ( ' + progressPercent + '٪ )';
 
-  const resultBox = document.getElementById('challengeResult');
-  if (doneCount >= 40) { 
-    resultBox.classList.remove('hidden');
-    showChallengeResult(progressPercent);
+  const endBtn = document.getElementById('endChallengeBtn');
+if (endBtn) {
+  if (doneCount > 0 && doneCount < 40) {
+    endBtn.style.display = 'inline-block';
   } else {
-    resultBox.classList.add('hidden');
+    endBtn.style.display = 'none';
   }
 }
 
@@ -709,6 +712,16 @@ function resetChallenge() {
     renderChallenge();
   }
 }
+  function finishChallenge() {
+  const doneCount = currentChallengeData.completedDays.length;
+  const progressPercent = Math.round((doneCount / 40) * 100);
+  
+  const resultBox = document.getElementById('challengeResult');
+  if (resultBox) {
+    resultBox.classList.remove('hidden');
+    showChallengeResult(progressPercent);
+  }
+  }
 </script>
 </body>
 </html>  
