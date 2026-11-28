@@ -552,7 +552,7 @@ let answers = Array(24).fill(null);
 let current = 0;
 let latestScores = null;
 let currentChallengeData = { type: null, startDate: null, completedDays: [] };
-
+let showChallengeActive = false;
 document.addEventListener('DOMContentLoaded', ()=>{ 
   const sc = document.getElementById('startConsent'); 
   if(sc) sc.addEventListener('change', e=>{ document.getElementById('beginBtn').disabled = !e.target.checked; }); 
@@ -589,7 +589,7 @@ function buildReport(){
   sorted.forEach(x=>{ const [lv] = level(x.s); out += `<div class="scoreCard"><div class="scoreHead"><span>${x.d.name}</span><span>${x.s} از ۱۰۰</span></div><div class="bar"><span style="width:${x.s}%"></span></div><div class="level">${lv}</div></div>`; }); 
   out += '</div><h3 style="color:var(--green)">پیشنهادهای رشد (سه حوزه پررنگ‌تر)</h3>'; 
   sorted.slice(0,3).forEach(x=>{ const [lv] = level(x.s); out += `<div class="domainReport"><h3>${x.d.name} — ${lv}</h3><p>${x.d.desc}</p><div class="notice" style="margin:10px 0;"><p><strong>کلام امیرالمؤمنین (ع):</strong> ${x.d.hadith}</p><p><strong style="color:var(--gold)">${x.d.solution}</strong></p><p class="small">منبع: ${x.d.ref}</p></div></div>`; }); 
-  out += `<div style="margin-top: 20px; padding: 20px; background: #fff7e4; border-radius: 15px; border: 1px solid var(--gold); text-align: center;"><p style="color: var(--green); font-weight: bold; margin-bottom: 10px;">بر اساس نمره‌های شما، پیشنهاد می‌شه برنامه ۴۰ روزه خودسازی رو شروع کنید.</p><button class="btn gold" onclick="renderChallenge(); showPage('challenge');">مشاهده چله خودسازی ←</button></div>`;
+  out += `<div style="margin-top: 20px; padding: 20px; background: #fff7e4; border-radius: 15px; border: 1px solid var(--gold); text-align: center;"><p style="color: var(--green); font-weight: bold; margin-bottom: 10px;">بر اساس نمره‌های شما، پیشنهاد می‌شه برنامه ۴۰ روزه خودسازی رو شروع کنید.</p><button class="btn gold" onclick="showChallengeActive = true;renderChallenge(); showPage('challenge');">مشاهده چله خودسازی ←</button></div>`;
   out += `<div class="notice" style="margin-top:20px"><strong>یادآوری:</strong> این پرسش‌نامه نسخه اولیه تأملی است و هنوز روایی و پایایی آن در پژوهش مستقل بررسی نشده است. برای بررسی مشکلات روان‌شناختی، با متخصص واجد صلاحیت گفت‌وگو کنید.</div>`; 
   out += `<div class="resultActions"><button class="btn" onclick="window.print()">چاپ / ذخیره PDF</button><button class="btn outline" onclick="copyReport()">کپی گزارش</button><button class="btn outline" onclick="resetTest()">شروع دوباره آزمون</button><button class="btn outline" onclick="showPage('home')">بازگشت به خانه</button></div>`; 
   document.getElementById('reportContent').innerHTML = out; 
@@ -690,15 +690,11 @@ function initChallenge() {
   if (saved) { currentChallengeData = JSON.parse(saved); }
 }
 
-function renderChallenge() {
-  const intro = document.getElementById('challengeIntro');
-  const active = document.getElementById('challengeActive');
-  
-  if (!currentChallengeData.type) {
-    if(intro) intro.classList.remove('hidden');
-    if(active) active.classList.add('hidden');
-    return;
-  }
+if (!currentChallengeData.type || !showChallengeActive) {
+  if(intro) intro.classList.remove('hidden');
+  if(active) active.classList.add('hidden');
+  return;
+}
 
   if(intro) intro.classList.add('hidden');
   if(active) active.classList.remove('hidden');
