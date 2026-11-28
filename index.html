@@ -689,7 +689,9 @@ function initChallenge() {
   const saved = localStorage.getItem('noskheh_challenge_data');
   if (saved) { currentChallengeData = JSON.parse(saved); }
 }
-
+function renderChallenge() {
+  const intro = document.getElementById('challengeIntro');
+  const active = document.getElementById('challengeActive');
 if (!currentChallengeData.type || !showChallengeActive) {
   if(intro) intro.classList.remove('hidden');
   if(active) active.classList.add('hidden');
